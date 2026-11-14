@@ -1,0 +1,23 @@
+{
+  "topics": [
+    "Material flammability",
+    "Fire suppression",
+    "Smoke & aerosol detection",
+    "Flame structure",
+    "Oxygen & airflow effects",
+    "Droplet combustion",
+    "Electric-field effects"
+  ],
+  "fuel_classes": [
+    "Solid",
+    "Gas",
+    "Liquid droplet",
+    "Particulate / aerosol"
+  ],
+  "featured_ids": [
+    "psi-bass",
+    "psi-flex",
+    "psi-same",
+    "psi-acme-cfig"
+  ]
+}

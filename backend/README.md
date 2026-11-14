@@ -8,6 +8,23 @@ The backend does two jobs. It serves the six pages that exist with real PSI reco
 
 Assumed stack: FastAPI, Supabase for the database and file storage, and one model provider (DeepSeek for now). Names, units and folders below are a proposal. The developer on a task decides the details inside their own folder.
 
+## Run the backend
+
+T0 is in place: the app starts, and every route answers with sample data.
+
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate            # Windows. On macOS or Linux: source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+- The list of routes is at http://localhost:8000/docs.
+- The checks run with `python -m pytest`.
+- Keys and addresses go in `backend/.env` (copy `backend/.env.example`). Start with `uvicorn app.main:app --env-file .env` to load them.
+- To point the frontend at this backend, put `NEXT_PUBLIC_USE_MOCK=false` in `frontend/ignis-frontend/.env.local` and restart the frontend.
+
 ## At a glance
 
 ```mermaid
