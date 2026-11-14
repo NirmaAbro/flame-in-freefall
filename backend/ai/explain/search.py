@@ -32,9 +32,12 @@ def interpret(question: str) -> Dict[str, Any]:
     if not question:
         return {"interpreted_as": {}, "explanation": NO_QUESTION}
 
-    stored = records.load_records()
-    allowed = records.allowed_values(stored)
     keyword_search = {"interpreted_as": {"q": _one_line(question)}, "explanation": KEYWORDS_USED}
+    try:
+        stored = records.load_records()
+    except Exception:  # the records cannot be read, so no filter can be checked
+        return keyword_search
+    allowed = records.allowed_values(stored)
 
     output = model.ask_model(json.dumps({"question": question, "allowed": allowed}, ensure_ascii=False), SYSTEM, TIMEOUT)
     if output is None:

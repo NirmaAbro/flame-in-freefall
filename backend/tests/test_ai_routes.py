@@ -16,9 +16,10 @@ import socket
 
 import httpx
 import pytest
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
-from app import fixtures, llm, schemas
+from app import data_access, fixtures, llm, schemas
 from app.main import app
 
 API = "/api/v1"
@@ -795,6 +796,68 @@ def test_r8_the_ranking_data_is_not_changed(monkeypatch):
     assert data == ([MOON, SUIT, ISS], RANKED, RANK_TESTS, "made-up data")
 
 
+# ---------- N: the AI routes read the records through the shared data file (app/data_access.py) ----------
+
+UNREADABLE = "The indexed records cannot be read at the moment. Try again later."
+
+
+def shared_records(monkeypatch, records=(), fail=False):
+    """Stand in for list_investigations of app/data_access.py. Returns the list of calls.
+
+    Like the database, the stand-in gives at most 1,000 records for one call.
+    """
+    calls = []
+    records = list(records)
+
+    def list_investigations(q=None, hardware_family=None, page=1, page_size=25):
+        calls.append((q, hardware_family, page, page_size))
+        if fail:
+            raise HTTPException(status_code=503, detail="Database query failed: made-up")
+        start = (page - 1) * page_size
+        return copy.deepcopy(records[start : start + min(page_size, 1000)]), len(records), "supabase"
+
+    monkeypatch.setattr(data_access, "list_investigations", list_investigations)
+    return calls
+
+
+def database_record(record_id, title, acronym):
+    """A record as the database holds it today: no summary, no topic, and an empty source link."""
+    empty_lists = {key: [] for key in ("fuel_classes", "fuel_materials", "topic_tags", "measurement_types", "conditions", "files", "publications")}
+    return {"id": record_id, "source_id": record_id, "title": title, "acronym": acronym, "summary": None, "platform": None, "hardware": None, **empty_lists, "source_url": "", "data_status": "parsed"}
+
+
+def test_n1_the_records_come_from_the_shared_data_file(monkeypatch):
+    many = [database_record(f"X-{number:04d}", f"Study {number}", None) for number in range(2300)]
+    calls = shared_records(monkeypatch, many)
+    assert [record["id"] for record in m.records.load_records()] == [record["id"] for record in many]  # every record once
+    assert len(calls) == 3  # pages of at most 1,000
+    assert all(call[:2] == (None, None) for call in calls)  # no search text and no filter
+
+
+def test_n2_a_selected_database_record_is_found(monkeypatch):
+    stored = [
+        database_record("PSI-25", "Burning and Suppression of Solids - II (BASS-II)", "BASS-II"),
+        database_record("PSI-69", "Flame Extinguishment Experiment (FLEX)", "FLEX"),
+    ]
+    shared_records(monkeypatch, stored)
+    use_model(monkeypatch, llm.LLMUnavailable("off"))
+    assert ask("What did this study vary?", ["PSI-69", "psi-flex"]) == {
+        "answer": "You selected 1 record. FLEX: no summary in the indexed record.",
+        "citations": [{"investigation_id": "PSI-69", "title": "Flame Extinguishment Experiment (FLEX)", "source_url": PSI_HOME}],
+        "limitations": [NOT_USED, ONE_MISSING],  # the sample id psi-flex is no database record
+        "follow_up_questions": [],
+    }
+
+
+def test_n3_a_database_error_still_gets_an_answer(monkeypatch):
+    shared_records(monkeypatch, fail=True)
+    fake = forbid_model(monkeypatch)
+    assert ask("What is known about oxygen?") == {**EMPTY, "answer": UNREADABLE}
+    assert ask("Compare these", ["psi-flex", "psi-bass"]) == {**EMPTY, "answer": UNREADABLE}
+    assert search(Q) == {"interpreted_as": {"q": Q}, "explanation": KEYWORDS_USED}
+    assert fake.calls == []  # with no records there is nothing to send to the model
+
+
 # ---------- E: agreement with the record routes (over HTTP, no code of T3 is imported) ----------
 
 
@@ -842,10 +905,12 @@ def test_f1_the_old_stub_checks():
     assert cited(ask("What is known about oxygen?")) == ["psi-acme-cfig", "psi-bass", "psi-bass-ii", "psi-spice"]
 
 
-# ---------- G: live tests, skipped without a model key ----------
+# ---------- G: live tests, skipped without a clear switch ----------
 
-
-needs_key = pytest.mark.skipif(not os.getenv("LLM_API_KEY"), reason="LLM_API_KEY is not set")
+# A key in the environment is not enough: app/data_access.py loads backend/.env when the app is imported.
+# To call the real model, set IGNIS_LIVE_TESTS=1 for that one run.
+LIVE = os.getenv("IGNIS_LIVE_TESTS") == "1" and bool(os.getenv("LLM_API_KEY"))
+needs_key = pytest.mark.skipif(not LIVE, reason="live test: set IGNIS_LIVE_TESTS=1 and LLM_API_KEY to call the real model")
 
 
 @pytest.mark.live
@@ -861,3 +926,10 @@ def test_g1_live_ask_with_two_selected_records():
 @needs_key
 def test_g2_live_search_finds_the_topic():
     assert search("fire suppression on the space station")["interpreted_as"].get("topic") == "Fire suppression"
+
+
+def test_g3_a_plain_test_run_never_calls_the_real_model():
+    live_tests = (test_g1_live_ask_with_two_selected_records, test_g2_live_search_finds_the_topic)
+    marks = [mark for test in live_tests for mark in test.pytestmark if mark.name == "skipif"]
+    assert len(marks) == 2
+    assert os.getenv("IGNIS_LIVE_TESTS") == "1" or all(mark.args[0] is True for mark in marks)
