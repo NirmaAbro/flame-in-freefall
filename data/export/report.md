@@ -1,6 +1,6 @@
 # T2 Ingest Report
 
-Total test rows ingested: **403** (15 with flags)
+Total test rows ingested: **403** (16 with flags)
 
 
 ## PSI-25  (129 rows)
@@ -24,7 +24,7 @@ Total test rows ingested: **403** (15 with flags)
 | diluent | 0 | 274 |
 | outcome | 274 | 0 |
 | oxygen_pct | 274 | 0 |
-| pressure_kpa | 274 | 0 |
+| pressure_kpa | 273 | 1 |
 | flow_cm_s | 0 | 274 |
 
 ## PSI-68  (parameter-space summary — 0 test rows loaded)
@@ -52,3 +52,4 @@ The raw file for PSI-68 contains 8 parameter-space rows (one row per fuel type, 
 | PSI-25 | 127 | data_quality | multiple | oxygen_pct (final O2): initial=20.70% final=0.90% — drop of 19.80 pp exceeds threshold 5.0 pp |
 | PSI-25 | 127 | data_quality | multiple | Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept |
 | PSI-25 | 129 | data_quality | multiple | Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept |
+| PSI-69 | 114 | pressure_kpa | Ambient pressure; mmHg | pressure_kpa (Ambient pressure; mmHg): source reports 0.0 mmHg, physically implausible for a test condition; treated as not reported (raw value kept) |

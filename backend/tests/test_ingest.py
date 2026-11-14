@@ -100,6 +100,18 @@ class TestNullTokens:
         assert val is None
         assert val != 0
 
+    def test_empty_pressure_cell_gives_none_not_zero(self):
+        """An empty pressure cell must give None, never 0."""
+        val, flags = parse_cell("", "pressure_kpa", "Ambient pressure; mmHg", "float", "mmHg")
+        assert val is None
+        assert val != 0
+
+    def test_literal_zero_pressure_gives_none_with_flag(self):
+        """A literal '0' pressure cell is physically implausible; must be None + flag."""
+        val, flags = parse_cell("0", "pressure_kpa", "Ambient pressure; mmHg", "float", "mmHg")
+        assert val is None
+        assert any("implausible" in f for f in flags)
+
 
 # ===========================================================================
 # Flagged value keeps its raw string
@@ -133,10 +145,11 @@ class TestFlaggedValueKeepsRaw:
         assert val == pytest.approx(150.0)
         assert any("outside" in f or "outside" in f for f in flags)
 
-    def test_negative_pressure_keeps_value(self):
+    def test_negative_pressure_gives_none_with_flag(self):
+        """pressure_kpa <= 0 must be None with an implausibility flag (raw kept)."""
         val, flags = parse_cell("-5.0", "pressure_kpa", "P", "float", "mmHg")
-        assert val == pytest.approx(-5.0 * 0.133322368)
-        assert any("negative" in f for f in flags)
+        assert val is None
+        assert any("implausible" in f for f in flags)
 
 
 # ===========================================================================
@@ -219,3 +232,56 @@ class TestIntegrationPSI25:
                     assert any("negative" in f.lower() or "CO" in f for f in row.flags), (
                         f"Row {row.source_row}: CO={co_val} but no CO flag found"
                     )
+
+
+# ===========================================================================
+# Integration test: no pressure_kpa <= 0 across all ingested rows
+# ===========================================================================
+
+
+class TestNoPressureLEZero:
+    """After fix, no test row produced from any raw file may have pressure_kpa <= 0."""
+
+    @pytest.fixture(scope="class")
+    def all_rows(self):
+        import json
+        from ingest.run import ingest_file
+        _MAPPINGS = _BACKEND.parent / "data" / "mappings"
+        _RAW_DIR = _BACKEND.parent / "data" / "raw"
+
+        all_rows = []
+        for psi_id, raw_glob in [
+            ("PSI-25", "PSI-25_*"),
+            ("PSI-69", "PSI-69_*"),
+        ]:
+            raw_files = list(_RAW_DIR.glob(raw_glob))
+            if not raw_files:
+                continue
+            mapping_path = _MAPPINGS / f"{psi_id}.json"
+            with mapping_path.open() as fh:
+                mapping = json.load(fh)
+            rows, _ = ingest_file(psi_id, raw_files[0], mapping)
+            all_rows.extend(rows)
+        return all_rows
+
+    def test_no_row_has_pressure_le_zero(self, all_rows):
+        """No ingested row may have pressure_kpa <= 0 (must be None instead)."""
+        bad = [
+            (r.investigation_id, r.source_row, r.pressure_kpa)
+            for r in all_rows
+            if r.pressure_kpa is not None and r.pressure_kpa <= 0
+        ]
+        assert bad == [], (
+            f"Found rows with pressure_kpa <= 0: {bad}"
+        )
+
+    def test_zero_pressure_row_has_flag(self, all_rows):
+        """The PSI-69 row that sources '0 mmHg' must carry an implausibility flag."""
+        psi69_rows = [r for r in all_rows if r.investigation_id == "PSI-69"]
+        # source_row 114 is the offending row
+        row114 = next((r for r in psi69_rows if r.source_row == 114), None)
+        assert row114 is not None, "PSI-69 source_row 114 not found in ingested rows"
+        assert row114.pressure_kpa is None
+        assert any("implausible" in f for f in row114.flags), (
+            f"Row 114 flags: {row114.flags}"
+        )

@@ -10,7 +10,8 @@ Rules
 - Mole-fraction sanity: value > 1 → flag ("value above 1, may already be a percent"),
   do NOT multiply — return as-is after the flag (caller skips unit conversion).
 - oxygen_pct outside [0, 100] → flag (keep value).
-- pressure_kpa or flow_cm_s negative → flag (keep value).
+- pressure_kpa <= 0 → None + flag (physically implausible; raw value kept).
+- flow_cm_s negative → flag (keep value).
 - BASS-II only extra flags are applied in run.py after a full row is assembled.
 """
 from __future__ import annotations
@@ -92,7 +93,15 @@ def parse_cell(
                 "value kept"
             )
 
-        if field in ("pressure_kpa", "flow_cm_s") and converted < 0:
+        if field == "pressure_kpa" and converted <= 0:
+            flags.append(
+                f"pressure_kpa ({column}): source reports {numeric} {unit}, "
+                f"physically implausible for a test condition; "
+                "treated as not reported (raw value kept)"
+            )
+            return None, flags
+
+        if field == "flow_cm_s" and converted < 0:
             flags.append(
                 f"{field} ({column}): negative value {converted:.4g} — value kept"
             )

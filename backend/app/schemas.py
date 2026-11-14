@@ -254,6 +254,15 @@ class RankedInvestigation(BaseModel):
     acronym: Optional[str] = None
     score: Optional[float] = None
     parts: List[ScorePart]
+    # T4 extended fields (all optional so existing tests stay green)
+    match: Optional[float] = None           # tests_full / tests_total
+    coverage: Optional[float] = None        # (tests with both O2 and P) / tests_total
+    tests_total: Optional[int] = None
+    tests_full: Optional[int] = None
+    tests_partial: Optional[int] = None
+    tests_none: Optional[int] = None
+    unconstrained: List[str] = Field(default_factory=list)
+    note: Optional[str] = None
 
 
 class RankResponse(BaseModel):
@@ -261,6 +270,9 @@ class RankResponse(BaseModel):
     items: List[RankedInvestigation]
     formula: Optional[str] = None
     notes: List[str]
+    # T4 added
+    data_source: Optional[str] = None
+    method_note: Optional[str] = None
 
 
 class VariableSummary(BaseModel):
