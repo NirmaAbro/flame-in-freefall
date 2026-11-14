@@ -36,6 +36,7 @@ MAX_QUESTION, MAX_ANSWER, MAX_FOLLOW_UPS, MAX_FOLLOW_UP_LENGTH = 1000, 3000, 3, 
 
 BLANK = "Type a question about the indexed records."
 NOT_FOUND = "The selected records were not found."
+UNREADABLE = "The indexed records cannot be read at the moment. Try again later."
 NO_ANSWER = "The indexed records do not establish this. Try a narrower question, or use Explore."
 NO_SUMMARY = "no summary in the indexed record."
 NOT_USED = "The AI answer was not used. This text was made without it."
@@ -58,7 +59,10 @@ def answer(question: str, investigation_ids: Optional[List[str]] = None) -> Dict
     if not question:
         return _body(BLANK)
 
-    stored = records.load_records()
+    try:
+        stored = records.load_records()
+    except Exception:  # the database cannot be read; this route still answers, and it shows no sample data as real
+        return _body(UNREADABLE)
     notes: List[str] = []
     habitat: Optional[Record] = None
     if investigation_ids:

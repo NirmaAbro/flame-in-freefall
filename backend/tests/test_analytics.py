@@ -17,9 +17,10 @@ from pathlib import Path
 
 import httpx
 import pytest
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
-from app import fixtures, schemas
+from app import data_access, fixtures, schemas
 from app.main import app
 
 API = "/api/v1"
@@ -312,7 +313,9 @@ def test_g1_a_t5_file_imports_only_what_the_plan_allows():
     files = {path.name: path for path in folder.glob("*.py")}
     assert T5_FILES <= set(files)
     for name, path in files.items():
-        allowed = LOGIC_IMPORTS | ({"..fixtures"} if name == "data.py" else set())
+        # data.py reads the records and the test rows through the shared data file of the record routes,
+        # and the two fixed lists from the sample data, as the filter route does.
+        allowed = LOGIC_IMPORTS | ({"..fixtures", "..data_access"} if name == "data.py" else set())
         assert imported_modules(path) <= allowed, f"{name} imports {sorted(imported_modules(path) - allowed)}"
     for name in ("compare", "coverage", "variables"):
         modules = imported_modules(BACKEND / "app" / "routers" / f"{name}.py")
@@ -932,6 +935,82 @@ def test_d11_the_notes_say_when_no_person_checked_the_rows(monkeypatch, statuses
     body = variables("x-a")
     assert entry(body, "fuel") == var("fuel", "constant", ["PMMA"])
     assert body["notes"] == notes
+
+
+# ---------- N: T5 reads through the shared data file of the record routes (app/data_access.py) ----------
+
+
+def shared_file(monkeypatch, records=(), tests=(), fail=False):
+    """Stand in for the two functions of app/data_access.py that T5 calls. Returns the list of calls.
+
+    Like the database, the stand-in gives at most 1,000 records for one call.
+    """
+    calls = []
+    records, tests = list(records), list(tests)
+
+    def list_investigations(q=None, hardware_family=None, page=1, page_size=25):
+        calls.append(("records", q, hardware_family, page, page_size))
+        if fail:
+            raise HTTPException(status_code=503, detail="Database query failed: made-up")
+        start = (page - 1) * page_size
+        return copy.deepcopy(records[start : start + min(page_size, 1000)]), len(records), "supabase"
+
+    def iter_tests_csv(investigation_id=None):
+        calls.append(("tests", investigation_id))
+        if fail:
+            raise HTTPException(status_code=503, detail="Database query failed: made-up")
+        return iter(copy.deepcopy([item for item in tests if investigation_id in (None, item["investigation_id"])])), "supabase"
+
+    monkeypatch.setattr(data_access, "list_investigations", list_investigations)
+    monkeypatch.setattr(data_access, "iter_tests_csv", iter_tests_csv)
+    return calls
+
+
+def test_n1_the_records_come_from_the_shared_data_file(monkeypatch):
+    many = [record(f"x-{number:04d}") for number in range(2300)]
+    calls = shared_file(monkeypatch, records=many)
+    assert [item["id"] for item in m.data.records()] == [item["id"] for item in many]  # every record once
+    assert len(calls) == 3  # pages of at most 1,000
+    assert all(call[:3] == ("records", None, None) for call in calls)  # no search text and no filter
+
+    calls = shared_file(monkeypatch, records=many[:2000])
+    assert len(m.data.records()) == 2000 and len(calls) == 2
+
+
+def test_n2_the_test_rows_come_from_the_shared_data_file(monkeypatch):
+    stored = [row("x-a", oxygen_pct=21), row("x-b", oxygen_pct=30), row("x-a", oxygen_pct=25)]
+    calls = shared_file(monkeypatch, tests=stored)
+    assert m.data.tests() == stored
+    assert calls == [("tests", None)]
+
+
+def test_n3_a_database_error_is_not_hidden_behind_sample_data(monkeypatch):
+    shared_file(monkeypatch, fail=True)
+    assert client.post(API + "/compare", json={"investigation_ids": ["psi-flex", "psi-bass-ii"]}).status_code == 503
+    assert client.get(API + "/analytics/coverage").status_code == 503
+    assert client.get(API + "/investigations/psi-flex/variables").status_code == 503
+
+
+def test_n4_database_records_and_rows_reach_the_three_answers(monkeypatch):
+    stored = [
+        thin("PSI-25", "Burning and Suppression of Solids - II (BASS-II)", "BASS-II"),
+        thin("PSI-68", "Flame Extinguishment Experiment - 2 (FLEX-2)", "FLEX-2"),
+        thin("PSI-69", "Flame Extinguishment Experiment (FLEX)", "FLEX"),
+    ]
+    tests = [*rows("PSI-25", "oxygen_pct", [13.6, 22.2], data_status="parsed"), *rows("PSI-69", "oxygen_pct", [12, 34], data_status="parsed")]
+    shared_file(monkeypatch, records=stored, tests=tests)
+
+    body = compare(["PSI-69", "PSI-25"])  # the ids that the Explore page gives with the database
+    assert [item["id"] for item in body["investigations"]] == ["PSI-69", "PSI-25"]
+    assert charts(body) == [
+        ("Oxygen, lowest value in the test rows", "% by volume", [("PSI-69", "FLEX", 12.0), ("PSI-25", "BASS-II", 13.6)]),
+        ("Oxygen, highest value in the test rows", "% by volume", [("PSI-69", "FLEX", 34.0), ("PSI-25", "BASS-II", 22.2)]),
+    ]
+    answer = variables("PSI-69")
+    assert answer["test_count"] == 2
+    assert entry(answer, "oxygen_pct") == var("oxygen_pct", "varied", ["12", "34"], 12.0, 34.0)
+    assert coverage()["method_notes"] == [COUNT, MULTI, GAP, THREE_UNPLACED]
+    assert client.get(API + "/investigations/psi-flex/variables").status_code == 404  # a sample id is no database record
 
 
 # ---------- E: agreement with the other routes (over HTTP, no code of another task is imported) ----------
