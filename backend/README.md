@@ -65,7 +65,7 @@ The contract is six things that every task relies on, and T0 writes them down be
 | Record shapes | The answers of the eight routes the frontend already calls. They are copied from the frontend, not designed again. | `frontend/ignis-frontend/src/lib/types.ts`, copied into `backend/app/schemas.py` |
 | Test row | One row per test: investigation id, fuel, geometry, oxygen (% by volume), pressure (kPa), flow (cm/s), diluent, outcome, source file and row, and the raw values | `backend/app/schemas.py`, `backend/db/schema.sql` |
 | Habitat | Name, oxygen range, pressure range, gravity, and the NASA source of each number | `data/habitats.json` |
-| Mapping file | For one PSI table: which column feeds which field, the unit, the parse rule, and a status (proposed or approved) | `data/mappings/<PSI id>.json` |
+| Mapping file | For one PSI table: which column feeds which field, the unit of the source column, and a status (proposed or approved). Its shape is `MappingFile` in `schemas.py`. T2 uses approved files only. | `data/mappings/<PSI id>.json` |
 | Sample data | The frontend's 14 dummy records as JSON, so every stub answers with data the pages can show | `frontend/ignis-frontend/src/lib/mock/data.ts`, copied into `backend/fixtures/` |
 | Routes | The list below, with a stub for each | `backend/app/routers/` |
 
@@ -109,7 +109,7 @@ Ten tasks cover the backend. T0 to T3 make the built pages run on real records, 
 | T3 Record routes | The list with search, filters, sorting, pages and match reasons, the detail record, the filter values and the dashboard summary. The search rules are the ones in the frontend's `mockApi.ts`. | T0 (runs on sample data until T2 loads real records) | P0 | |
 | T4 Habitat ranking | One function that orders investigations for a chosen habitat, a route that returns the order with each part of the score, and a short note with the formula | T0 | P1 | |
 | T5 Compare and coverage | The compare answer for 2 to 4 records, the coverage matrix (topic by fuel class), and for one investigation which fields were varied and which were held constant | T0 | P1 | |
-| T6 AI mapping assistant | A script that sends a table's header and a few rows to the model and gets back a proposed mapping file, a way for a person to approve or correct it, and an accuracy script that scores proposals against the hand-checked sample | T0, and the hand-checked sample from T1 | P1 | |
+| T6 AI mapping assistant | A script that sends a table's header and a few rows to the model and gets back a proposed mapping file, a way for a person to approve or correct it, and an accuracy script that scores proposals against gold mappings written by hand | T0, and gold mappings written by hand | P1 | |
 | T7 AI routes | The answer route uses only the records it retrieved or was given, cites only those, lists limitations, and answers with a plain message when the model fails. The search route turns a question into the list's filters, and the backend checks them. | T0 | P1 | |
 | T8 Deploy and checks | The API running at a shared address, environment variables set for the backend and the frontend, CORS for the frontend, storage for raw tables and the CSV, and a script that calls every route | T0 | P1, earlier if the frontend needs a shared address | |
 | T9 Test rows and export | Routes for the test rows with filters, one test with its source row, the habitats, and the CSV download | T0 (runs on sample data until T2 loads real rows) | P0 | |
@@ -124,7 +124,7 @@ Each task works in its own place and has one check that says it is done.
 | T3 | `backend/app/search/`, `backend/app/routers/investigations.py`, `filters.py`, `dashboard.py` | Overview, Explore and the detail page show real records, and a search returns the same order as the frontend's dummy backend for the same data |
 | T4 | `backend/app/ranking/`, `backend/app/routers/rank.py`, `docs/ranking.md` | The same input always gives the same order, and the answer shows each part of the score |
 | T5 | `backend/app/analytics/`, `backend/app/routers/compare.py`, `coverage.py`, `variables.py` | Compare and Research Map show real records, a chart appears when two records share a parameter and unit, and for BASS-II oxygen and the fan setting show as varied |
-| T6 | `backend/ai/mapping/`, `data/mappings/` | It writes a valid mapping file for a table it has not seen, and the accuracy script prints a score |
+| T6 | `backend/ai/mapping/`, `data/mappings/`, `data/proposals/`, `data/gold/` | It writes a valid mapping file for a table it has not seen, and the accuracy script prints a score |
 | T7 | `backend/ai/answers/`, `backend/app/routers/ai.py` | Every citation is a record that was retrieved or given, and both routes still answer when the model is off |
 | T8 | `backend/deploy/`, `backend/scripts/smoke.py` | The smoke script passes against the shared address, and the frontend runs against it |
 | T9 | `backend/app/routers/tests.py`, `habitats.py`, `export.py` | Each route returns real rows that match the contract, the filters work together, and the CSV has one row per test |
@@ -167,8 +167,9 @@ data/
   manifest.csv           T1
   investigations.json    T1
   habitats.json          T1
-  gold/                  T1  hand-checked sample rows
-  mappings/              T6 proposes, a person approves, T2 reads
+  gold/                  T1  hand-checked sample rows; T6 gold mappings written by hand
+  mappings/              T6 proposes, a person approves, T2 reads the approved ones
+  proposals/             T6  untouched copies of the model's proposals, for the score
 docs/
   ranking.md             T4
 ```
