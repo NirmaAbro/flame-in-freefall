@@ -1,0 +1,454 @@
+[
+  {
+    "source_id": "PSI-SAMPLE-BASS",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Microgravity Science Glovebox (MSG), modular fan-driven flow duct built for SPICE",
+    "fuel_classes": [
+      "Solid"
+    ],
+    "fuel_materials": [
+      "Fabrics",
+      "Plastics"
+    ],
+    "topic_tags": [
+      "Material flammability",
+      "Oxygen & airflow effects"
+    ],
+    "measurement_types": [
+      "Flame spread observation"
+    ],
+    "conditions": [],
+    "files": [
+      {
+        "id": "psi-bass-file-1",
+        "title": "BASS investigation overview (placeholder)",
+        "file_type": "PDF",
+        "description": "Placeholder entry. The real backend will list reviewed PSI files here.",
+        "source_url": "https://psi.nasa.gov/physci/repo",
+        "reviewed": false
+      }
+    ],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-bass",
+    "title": "Burning and Suppression of Solids",
+    "acronym": "BASS",
+    "summary": "Studies the flammability of solid materials such as fabrics and plastics in microgravity, where oxygen concentration and air flow strongly affect burning."
+  },
+  {
+    "source_id": "PSI-SAMPLE-BASS-II",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Microgravity Science Glovebox (MSG), modular fan-driven flow duct built for SPICE",
+    "fuel_classes": [
+      "Solid"
+    ],
+    "fuel_materials": [
+      "Fabrics",
+      "Plastics"
+    ],
+    "topic_tags": [
+      "Material flammability",
+      "Oxygen & airflow effects"
+    ],
+    "measurement_types": [
+      "Flame spread observation"
+    ],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-bass-ii",
+    "title": "Burning and Suppression of Solids - II",
+    "acronym": "BASS-II",
+    "summary": "Second investigation in the BASS series on solid-material flammability, using the same glovebox flow-duct hardware."
+  },
+  {
+    "source_id": "PSI-SAMPLE-Saffire",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": null,
+    "environment": null,
+    "hardware": null,
+    "fuel_classes": [
+      "Solid"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Material flammability"
+    ],
+    "measurement_types": [],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-saffire",
+    "title": "Spacecraft Fire Safety Demonstration",
+    "acronym": "Saffire",
+    "summary": "Saffire-I, -II and -III investigate material flammability in spacecraft-scale conditions. Platform and hardware details are not captured in this sample record."
+  },
+  {
+    "source_id": "PSI-SAMPLE-SAME",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": null,
+    "environment": "Microgravity",
+    "hardware": null,
+    "fuel_classes": [
+      "Particulate / aerosol"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Smoke & aerosol detection"
+    ],
+    "measurement_types": [
+      "Smoke and aerosol measurement"
+    ],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-same",
+    "title": "Smoke and Aerosol Measurement Experiment",
+    "acronym": "SAME",
+    "summary": "Tested fire detection in microgravity by measuring smoke and aerosol particles produced by overheated or burning materials."
+  },
+  {
+    "source_id": "PSI-SAMPLE-SAME-R",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": null,
+    "environment": "Microgravity",
+    "hardware": null,
+    "fuel_classes": [
+      "Particulate / aerosol"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Smoke & aerosol detection"
+    ],
+    "measurement_types": [
+      "Smoke and aerosol measurement"
+    ],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-same-r",
+    "title": "Smoke and Aerosol Measurement Experiment - Reflight",
+    "acronym": "SAME-R",
+    "summary": "Follow-on to SAME for fire detection in microgravity, using the same smoke and aerosol measurement instrument."
+  },
+  {
+    "source_id": "PSI-SAMPLE-DAFT",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": null,
+    "environment": "Microgravity",
+    "hardware": null,
+    "fuel_classes": [
+      "Particulate / aerosol"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Smoke & aerosol detection"
+    ],
+    "measurement_types": [
+      "Dust and aerosol measurement"
+    ],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-daft",
+    "title": "Dust and Aerosol Measurement Feasibility Test",
+    "acronym": "DAFT",
+    "summary": "Used an instrument that also served in SAME and SAME-R, here to detect dust instead of smoke. Still relevant to fire safety, though less directly."
+  },
+  {
+    "source_id": "PSI-SAMPLE-FLEX",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Multi-user Droplet Combustion Apparatus (MDCA) in the Combustion Integrated Rack (CIR)",
+    "fuel_classes": [
+      "Liquid droplet"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Fire suppression",
+      "Droplet combustion"
+    ],
+    "measurement_types": [
+      "Droplet burning observation"
+    ],
+    "conditions": [],
+    "files": [
+      {
+        "id": "psi-flex-file-1",
+        "title": "FLEX investigation overview (placeholder)",
+        "file_type": "PDF",
+        "description": "Placeholder entry. The real backend will list reviewed PSI files here.",
+        "source_url": "https://psi.nasa.gov/physci/repo",
+        "reviewed": false
+      }
+    ],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-flex",
+    "title": "Flame Extinguishment Experiment",
+    "acronym": "FLEX",
+    "summary": "Studied fire suppression by burning liquid-fuel droplets while diluting the chamber atmosphere with carbon dioxide and helium, both of which suppress fire."
+  },
+  {
+    "source_id": "PSI-SAMPLE-FLEX-2",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Multi-user Droplet Combustion Apparatus (MDCA) in the Combustion Integrated Rack (CIR)",
+    "fuel_classes": [
+      "Liquid droplet"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Fire suppression",
+      "Droplet combustion"
+    ],
+    "measurement_types": [],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-flex-2",
+    "title": "Flame Extinguishment Experiment - 2",
+    "acronym": "FLEX-2",
+    "summary": "Second FLEX investigation featuring burning droplets of liquid fuel."
+  },
+  {
+    "source_id": "PSI-SAMPLE-CFI",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Multi-user Droplet Combustion Apparatus (MDCA) in the Combustion Integrated Rack (CIR)",
+    "fuel_classes": [
+      "Liquid droplet"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Droplet combustion"
+    ],
+    "measurement_types": [],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-cfi",
+    "title": "Cool Flames Investigation",
+    "acronym": "CFI",
+    "summary": "Burning liquid-fuel droplets studied with the droplet combustion apparatus."
+  },
+  {
+    "source_id": "PSI-SAMPLE-BRE",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Modular ACME hardware in the Combustion Integrated Rack (CIR)",
+    "fuel_classes": [
+      "Gas"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Material flammability"
+    ],
+    "measurement_types": [],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-acme-bre",
+    "title": "Burning Rate Emulator (ACME)",
+    "acronym": "BRE",
+    "summary": "Part of the ACME project. Burned gaseous fuels, but was a study of materials flammability in still atmospheres as a function of material properties."
+  },
+  {
+    "source_id": "PSI-SAMPLE-E-FIELD Flames",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity (electric field used to mimic partial-gravity effects)",
+    "hardware": "Modular ACME hardware in the Combustion Integrated Rack (CIR)",
+    "fuel_classes": [
+      "Gas"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Electric-field effects",
+      "Flame structure"
+    ],
+    "measurement_types": [],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-acme-efield",
+    "title": "Electric-Field Effects on Laminar Diffusion Flames (ACME)",
+    "acronym": "E-FIELD Flames",
+    "summary": "Part of the ACME project. Partial gravity was mimicked through the effect of an electric field on ions that naturally occur in flames."
+  },
+  {
+    "source_id": "PSI-SAMPLE-CFI-G",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Modular ACME hardware in the Combustion Integrated Rack (CIR)",
+    "fuel_classes": [
+      "Gas"
+    ],
+    "fuel_materials": [
+      "Propane (given as an example of the flammable gas)"
+    ],
+    "topic_tags": [
+      "Oxygen & airflow effects",
+      "Flame structure"
+    ],
+    "measurement_types": [],
+    "conditions": [
+      {
+        "name": "Maximum oxygen concentration in oxidizer flow",
+        "value": 85,
+        "unit": "% O2",
+        "context": "Oxygen-nitrogen mixture flowing from the spherical burner",
+        "citation": {
+          "source_name": "NASA Space Apps 2026 challenge background (sample data)",
+          "source_url": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+          "doi": null,
+          "location": "Objectives > Spacesuits and oxygen concentration",
+          "accessed_at": "2026-11-14"
+        }
+      }
+    ],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-acme-cfig",
+    "title": "Cool Flames Investigation with Gases (ACME)",
+    "acronym": "CFI-G",
+    "summary": "Highest oxygen concentrations tested in microgravity. A nitrogen and flammable-gas mixture filled the chamber while an oxygen-nitrogen mixture flowed from a spherical burner, creating an inside-out flame."
+  },
+  {
+    "source_id": "PSI-SAMPLE-SPICE",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Microgravity Science Glovebox (MSG), modular fan-driven flow duct built for SPICE",
+    "fuel_classes": [
+      "Solid",
+      "Gas"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Flame structure",
+      "Oxygen & airflow effects"
+    ],
+    "measurement_types": [],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-spice",
+    "title": "Smoke Point In Co-flow Experiment",
+    "acronym": "SPICE",
+    "summary": "Studies flames of solid and gaseous fuels. Its modular fan-driven flow duct was reused by BASS, BASS-II and SLICE."
+  },
+  {
+    "source_id": "PSI-SAMPLE-SLICE",
+    "research_area": "Combustion Science",
+    "project_type": null,
+    "platform": "International Space Station",
+    "environment": "Microgravity",
+    "hardware": "Microgravity Science Glovebox (MSG), modular fan-driven flow duct built for SPICE",
+    "fuel_classes": [
+      "Gas"
+    ],
+    "fuel_materials": [],
+    "topic_tags": [
+      "Flame structure"
+    ],
+    "measurement_types": [],
+    "conditions": [],
+    "files": [],
+    "publications": [],
+    "source_url": "https://psi.nasa.gov/physci/repo",
+    "doi": null,
+    "source_updated_at": null,
+    "ingested_at": "2026-11-12",
+    "data_status": "sample",
+    "id": "psi-slice",
+    "title": "Structure & Liftoff In Combustion Experiment",
+    "acronym": "SLICE",
+    "summary": "Studies flame structure and liftoff, conducted with the SPICE flow-duct hardware."
+  }
+]

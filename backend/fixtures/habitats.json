@@ -1,0 +1,36 @@
+[
+  {
+    "id": "moon-base",
+    "name": "Moon base or pressurized rover (expected)",
+    "oxygen_pct_min": 30.0,
+    "oxygen_pct_max": null,
+    "pressure_kpa_min": null,
+    "pressure_kpa_max": 70.33,
+    "gravity": "Lunar",
+    "citation": {
+      "source_name": "NASA Space Apps 2026 challenge text (sample data)",
+      "source_url": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+      "doi": null,
+      "location": "Potential considerations, Spacesuits and oxygen concentration: 30% oxygen or greater, 10.2 psi or less",
+      "accessed_at": "2026-11-14"
+    },
+    "data_status": "sample"
+  },
+  {
+    "id": "spacesuit",
+    "name": "Spacesuit",
+    "oxygen_pct_min": 100.0,
+    "oxygen_pct_max": 100.0,
+    "pressure_kpa_min": 29.65,
+    "pressure_kpa_max": 29.65,
+    "gravity": null,
+    "citation": {
+      "source_name": "NASA Space Apps 2026 challenge text (sample data)",
+      "source_url": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
+      "doi": null,
+      "location": "Potential considerations, Spacesuits and oxygen concentration: 100% oxygen at 4.3 psi",
+      "accessed_at": "2026-11-14"
+    },
+    "data_status": "sample"
+  }
+]
