@@ -77,23 +77,28 @@ Three rules come from the frontend and apply to every answer:
 
 Routes, all under `/api/v1`:
 
-| Task | Route | Used by | Frontend |
+| Task | Route | Query params | Notes |
 | --- | --- | --- | --- |
-| T0 | `GET /health` | Checks | Not needed |
-| T3 | `GET /dashboard/summary` | Overview, Research Map | Built |
-| T3 | `GET /filters` | Explore filters | Built |
-| T3 | `GET /investigations` | Explore | Built |
-| T3 | `GET /investigations/{id}` | Detail page, Overview | Built |
-| T5 | `POST /compare` | Compare | Built |
-| T5 | `GET /analytics/coverage` | Research Map | Built |
-| T7 | `POST /ai/search` | Explore, "Ask in plain language" | Built |
-| T7 | `POST /ai/ask` | Copilot, Compare | Built |
-| T9 | `GET /tests` | Map of tests | New page needed |
-| T9 | `GET /tests/{id}` | Map of tests | New page needed |
-| T9 | `GET /habitats` | Map of tests | New page needed |
-| T9 | `GET /export/tests.csv` | CSV download | New link needed |
-| T4 | `GET /rank?habitat=<id>` | Habitat ranking | New page needed |
-| T5 | `GET /investigations/{id}/variables` | Detail page | New section needed |
+| T0 | `GET /health` | — | Health check |
+| T3 | `GET /dashboard/summary` | — | Overview, Research Map |
+| T3 | `GET /filters` | — | Explore filter values |
+| T3 | `GET /investigations` | `q`, `hardware_family`, `page`, `page_size` (max 100, default 25) | Paginated; `q` matches title/acronym/summary/source\_id/hardware |
+| T3 | `GET /investigations/{id}` | — | 404 if not found; header `X-Data-Source` |
+| T3 | `GET /tests` | `investigation_id`, `fuel`, `outcome`, `min_oxygen`, `max_oxygen`, `min_pressure_kpa`, `max_pressure_kpa`, `page`, `page_size` (max 200, default 50) | Paginated; ordered by investigation\_id then source\_row |
+| T3 | `GET /tests/{id:path}` | — | id may contain colons/spaces; URL-encode before calling |
+| T3 | `GET /habitats` | — | Ordered by id |
+| T3 | `GET /export/tests.csv` | `investigation_id` | CSV download; streamed in 1 000-row pages |
+| T4 | `GET /rank?habitat=<id>` | `habitat` | Scores investigations for a habitat |
+| T5 | `POST /compare` | — | Compare 2–4 investigations |
+| T5 | `GET /analytics/coverage` | — | Topic × fuel-class coverage matrix |
+| T5 | `GET /investigations/{id}/variables` | — | Which fields were varied vs. constant |
+| T7 | `POST /ai/search` | — | Keyword search intent from a question |
+| T7 | `POST /ai/ask` | — | Copilot answer, citing only given records |
+
+**Data-source behaviour**
+- Credentials absent → routes serve `backend/fixtures/` and return `X-Data-Source: fixtures (sample)`.
+- Credentials present → routes query Supabase and return `X-Data-Source: supabase`.
+  If Supabase fails, the route returns HTTP 503. Fixture data is never served as real data.
 
 "Explain this selection" needs no new route. It is `POST /ai/ask` with the selected `investigation_ids`.
 
