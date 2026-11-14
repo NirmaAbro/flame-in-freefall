@@ -43,7 +43,9 @@ create table if not exists tests (
   source_file      text,
   source_row       integer,
   raw              jsonb not null default '{}',
-  data_status      text not null check (data_status in ('sample', 'verified'))
+  flags            jsonb not null default '[]',
+  data_status      text not null check (data_status in ('sample', 'verified')),
+  unique (investigation_id, source_file, source_row)
 );
 
 create index if not exists tests_investigation_id on tests (investigation_id);

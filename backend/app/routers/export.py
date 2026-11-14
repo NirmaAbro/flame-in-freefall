@@ -21,6 +21,7 @@ COLUMNS = [
     "outcome",
     "source_file",
     "source_row",
+    "flags",
     "data_status",
 ]
 
@@ -31,7 +32,12 @@ def export_tests_csv():
     buffer = io.StringIO()
     writer = csv.DictWriter(buffer, fieldnames=COLUMNS, extrasaction="ignore", lineterminator="\n")
     writer.writeheader()
-    writer.writerows(fixtures.tests())
+    for row in fixtures.tests():
+        out = dict(row)
+        # Serialise the flags list as semicolon-joined; empty list → empty cell
+        flags = out.get("flags") or []
+        out["flags"] = ";".join(flags) if flags else ""
+        writer.writerow(out)
     return Response(
         content=buffer.getvalue(),
         media_type="text/csv",

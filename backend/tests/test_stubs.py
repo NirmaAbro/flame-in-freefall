@@ -153,6 +153,46 @@ def test_csv_export_has_one_line_per_test_and_empty_cells_for_missing_values():
     assert lines[3]["pressure_kpa"] == "101.02"
 
 
+# ---------- flags field ----------
+
+
+def test_testrow_default_flags_is_empty_list():
+    """A TestRow built without flags must default to an empty list."""
+    row = schemas.TestRow(
+        id="x",
+        investigation_id="y",
+        raw={},
+        data_status="sample",
+    )
+    assert row.flags == []
+
+
+def test_flagged_test_row_returns_flags():
+    """GET /tests/{id} for the flagged fixture row must return a non-empty flags list."""
+    # psi-bass-ii-b1 is the row that carries the SAMPLE flag in fixtures/tests.json
+    body = get_ok("/tests/psi-bass-ii-b1")
+    schemas.TestRow.model_validate(body)
+    assert isinstance(body["flags"], list)
+    assert len(body["flags"]) > 0
+    # The flag text must mention the field name
+    assert any("flow_cm_s" in flag for flag in body["flags"])
+
+
+def test_csv_flags_column_present_and_populated():
+    """CSV header must contain 'flags'; the flagged row's cell must be non-empty;
+    rows without flags have an empty cell."""
+    response = client.get(API + "/export/tests.csv")
+    assert response.status_code == 200
+    reader = list(csv.DictReader(io.StringIO(response.text)))
+    assert "flags" in reader[0]  # column present in every row dict
+    # Row 0 is psi-bass-ii-b1 (the flagged one)
+    assert reader[0]["flags"] != ""
+    # Rows without flags have an empty cell (not "[]" or "None")
+    unflagged = [r for r in reader if r["id"] != "psi-bass-ii-b1"]
+    for row in unflagged:
+        assert row["flags"] == ""
+
+
 def test_rank_needs_a_known_habitat():
     body = get_ok("/rank", habitat="moon-base")
     schemas.RankResponse.model_validate(body)

@@ -31,6 +31,9 @@
       "Initial CO (ppm)": "0",
       "Final CO (ppm)": "6"
     },
+    "flags": [
+      "flow_cm_s: SAMPLE flag — 'Fan display' is a dimensionless dial setting, not cm/s; kept raw value, set flow_cm_s to null"
+    ],
     "data_status": "sample"
   },
   {

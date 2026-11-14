@@ -1,0 +1,18 @@
+{
+  "answer": "SAMPLE stub answer: Based on the selected test rows, flame behaviour appears sensitive to oxygen concentration and fuel material. This is a placeholder — AI explanation not yet implemented (task T7).",
+  "citations": [
+    {
+      "investigation_id": "psi-bass-ii",
+      "title": "Burning and Suppression of Solids - II",
+      "source_url": "https://psi.nasa.gov/physci/repo"
+    }
+  ],
+  "limitations": [
+    "SAMPLE limitation: stub response, no model called",
+    "SAMPLE limitation: pressure data missing for BASS-II test rows"
+  ],
+  "follow_up_questions": [
+    "SAMPLE: How does oxygen concentration affect flame spread rate?",
+    "SAMPLE: Which investigations tested pressures below 70 kPa?"
+  ]
+}

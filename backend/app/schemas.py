@@ -7,7 +7,7 @@ Rule from the frontend: a missing value is None (JSON null), never "" or 0.
 """
 from typing import Dict, Generic, List, Literal, Optional, TypeVar, Union
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 FuelClass = Literal["Solid", "Gas", "Liquid droplet", "Particulate / aerosol"]
 DataStatus = Literal["sample", "verified"]
@@ -225,6 +225,7 @@ class TestRow(BaseModel):
     source_file: Optional[str] = None
     source_row: Optional[int] = None
     raw: Dict[str, Optional[str]]  # the row as it stands in the PSI table
+    flags: List[str] = Field(default_factory=list)  # ingest warning tags (T2)
     data_status: DataStatus
 
 

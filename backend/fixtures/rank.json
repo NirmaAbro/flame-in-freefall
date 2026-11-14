@@ -1,0 +1,45 @@
+{
+  "moon-base": [
+    {
+      "investigation_id": "psi-bass-ii",
+      "title": "Burning and Suppression of Solids - II",
+      "acronym": "BASS-II",
+      "score": null,
+      "parts": [
+        {
+          "name": "oxygen_overlap",
+          "value": null,
+          "note": "SAMPLE stub — ranking logic not yet implemented (task T4)"
+        }
+      ]
+    },
+    {
+      "investigation_id": "psi-bass",
+      "title": "Burning and Suppression of Solids",
+      "acronym": "BASS",
+      "score": null,
+      "parts": [
+        {
+          "name": "oxygen_overlap",
+          "value": null,
+          "note": "SAMPLE stub — ranking logic not yet implemented (task T4)"
+        }
+      ]
+    }
+  ],
+  "spacesuit": [
+    {
+      "investigation_id": "psi-acme-cfig",
+      "title": "Cool Flames Investigation with Gases (ACME)",
+      "acronym": "CFI-G",
+      "score": null,
+      "parts": [
+        {
+          "name": "oxygen_overlap",
+          "value": null,
+          "note": "SAMPLE stub — ranking logic not yet implemented (task T4)"
+        }
+      ]
+    }
+  ]
+}
