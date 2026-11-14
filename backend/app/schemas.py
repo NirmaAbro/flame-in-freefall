@@ -10,7 +10,7 @@ from typing import Dict, Generic, List, Literal, Optional, TypeVar, Union
 from pydantic import BaseModel, Field
 
 FuelClass = Literal["Solid", "Gas", "Liquid droplet", "Particulate / aerosol"]
-DataStatus = Literal["sample", "verified"]
+DataStatus = Literal["sample", "parsed", "verified"]
 
 T = TypeVar("T")
 

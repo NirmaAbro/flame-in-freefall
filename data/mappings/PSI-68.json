@@ -1,0 +1,31 @@
+{
+  "psi_id": "PSI-68",
+  "status": "approved",
+  "fields": {
+    "fuel": {
+      "column": "Sample (Fuel Type)",
+      "unit": null,
+      "parse": "text"
+    },
+    "oxygen_pct": {
+      "column": "Oxygen Mole Fraction",
+      "unit": "mole_fraction",
+      "parse": "float"
+    },
+    "pressure_kpa": {
+      "column": "Ambient Pressure (atm)",
+      "unit": "atm",
+      "parse": "float"
+    },
+    "flow_cm_s": {
+      "column": "Flow Velocity (cm/s)",
+      "unit": "cm/s",
+      "parse": "float"
+    },
+    "diluent": {
+      "column": "Ambient Gas Mixture",
+      "unit": null,
+      "parse": "text"
+    }
+  }
+}

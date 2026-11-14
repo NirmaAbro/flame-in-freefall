@@ -1,0 +1,31 @@
+{
+  "psi_id": "PSI-69",
+  "status": "approved",
+  "fields": {
+    "test_label": {
+      "column": "FLEX Test #",
+      "unit": null,
+      "parse": "text"
+    },
+    "fuel": {
+      "column": "Fuel",
+      "unit": null,
+      "parse": "text"
+    },
+    "oxygen_pct": {
+      "column": "O initial ambient composition; mole fraction",
+      "unit": "mole_fraction",
+      "parse": "float"
+    },
+    "pressure_kpa": {
+      "column": "Ambient pressure; mmHg",
+      "unit": "mmHg",
+      "parse": "float"
+    },
+    "outcome": {
+      "column": "Test end",
+      "unit": null,
+      "parse": "text"
+    }
+  }
+}

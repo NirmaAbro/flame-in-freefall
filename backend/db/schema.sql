@@ -26,7 +26,7 @@ create table if not exists investigations (
   doi               text,
   source_updated_at text,
   ingested_at       text not null,
-  data_status       text not null check (data_status in ('sample', 'verified'))
+  data_status       text not null check (data_status in ('sample', 'parsed', 'verified'))
 );
 
 create table if not exists tests (
@@ -44,7 +44,7 @@ create table if not exists tests (
   source_row       integer,
   raw              jsonb not null default '{}',
   flags            jsonb not null default '[]',
-  data_status      text not null check (data_status in ('sample', 'verified')),
+  data_status      text not null check (data_status in ('sample', 'parsed', 'verified')),
   unique (investigation_id, source_file, source_row)
 );
 
@@ -59,5 +59,5 @@ create table if not exists habitats (
   pressure_kpa_max numeric,
   gravity          text,
   citation         jsonb not null,
-  data_status      text not null check (data_status in ('sample', 'verified'))
+  data_status      text not null check (data_status in ('sample', 'parsed', 'verified'))
 );

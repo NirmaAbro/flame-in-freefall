@@ -1,0 +1,404 @@
+id,investigation_id,test_label,fuel,geometry,oxygen_pct,pressure_kpa,flow_cm_s,diluent,outcome,source_file,source_row,flags,data_status
+PSI-25:PSI-25_Experimental table_BASS-II.csv:1,PSI-25,B1,100 micron PMMA film   2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,1,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:2,PSI-25,B2,200 micron PMMA film   2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,2,oxygen_pct (final O2): initial=22.20% final=1.60% — drop of 20.60 pp exceeds threshold 5.0 pp,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:3,PSI-25,B3,100 micron film   2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,3,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:4,PSI-25,B4,300 micron PMMA film   2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,4,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:5,PSI-25,B5,200 micron  2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,5,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:6,PSI-25,B6,2 cm 0.1 mm PMMA film,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,6,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:7,PSI-25,B7,400 micron film   2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,7,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:8,PSI-25,B8,2 cm   0.2 mm PMMA film,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,8,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:9,PSI-25,B9,2 cm   0.1 mm PMMA film,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,9,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:10,PSI-25,B10,1 cm   0.2 mm PMMA film,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,10,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:11,PSI-25,B11,2 cm   0.2 mm PMMA film,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,11,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:12,PSI-25,B12,300 micron film   2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,12,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:13,PSI-25,B13,2 cm   0.4 mm thick film,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,13,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:14,PSI-25,B14,1 cm wide 200 micron thick PMMA,,15.0,,,,,PSI-25_Experimental table_BASS-II.csv,14,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:15,PSI-25,B15,2 cm   0.1 mm PMMA film,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,15,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:16,PSI-25,B16,2 cm 100 micron thick PMMA,,17.3,,,,,PSI-25_Experimental table_BASS-II.csv,16,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:17,PSI-25,B17,1 cm wide 200 micron thick PMMA,,17.5,,,,,PSI-25_Experimental table_BASS-II.csv,17,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:18,PSI-25,B18,1 cm wide 200 micron thick PMMA,,17.4,,,,,PSI-25_Experimental table_BASS-II.csv,18,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:19,PSI-25,B19,2 cm 100 micron thick PMMA,,17.3,,,,,PSI-25_Experimental table_BASS-II.csv,19,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:20,PSI-25,B20,2 cm 100 micron thick PMMA,,17.4,,,,,PSI-25_Experimental table_BASS-II.csv,20,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:21,PSI-25,B21,1 cm wide 200 micron thick PMMA,,20.8,,,,,PSI-25_Experimental table_BASS-II.csv,21,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:22,PSI-25,B22,1 cm wide 200 micron thick PMMA,,20.7,,,,,PSI-25_Experimental table_BASS-II.csv,22,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:23,PSI-25,F1,Nomex natural (nomex III),,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,23,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:24,PSI-25,F2,Nomex natural (nomex III),,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,24,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:25,PSI-25,F3,Nomex natural (nomex III),,21.7,,,,,PSI-25_Experimental table_BASS-II.csv,25,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:26,PSI-25,F4,Japan Wax candle,,17.4,,,,,PSI-25_Experimental table_BASS-II.csv,26,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:27,PSI-25,M1,1 mm thick PMMA   1 sided   2 cm,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,27,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:28,PSI-25,M2,3 mm thick PMMA 1 sided    2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,28,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:29,PSI-25,M3,2 cm wide   5 mm thick 1 sided PMMA,,20.8,,,,,PSI-25_Experimental table_BASS-II.csv,29,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:30,PSI-25,M4,5 mm thick PMMA   2 cm wide,,21.8,,,,,PSI-25_Experimental table_BASS-II.csv,30,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:31,PSI-25,M5,3 mm thick PMMA   2 sided   2 cm thick,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,31,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:32,PSI-25,M6,1 mm thick PMMA   2 cm wide,,21.8,,,,,PSI-25_Experimental table_BASS-II.csv,32,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:33,PSI-25,M7,1 cm wide PMMA 1 mm thick,,18.9,,,,,PSI-25_Experimental table_BASS-II.csv,33,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:34,PSI-25,M8,1 cm wide PMMA 2 mm thick,,19.1,,,,,PSI-25_Experimental table_BASS-II.csv,34,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:35,PSI-25,M9,1 cm wide PMMA 3 mm thick,,18.0,,,,,PSI-25_Experimental table_BASS-II.csv,35,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:36,PSI-25,M10,4 mm thick   1 cm wide PMMA slab,,20.1,,,,,PSI-25_Experimental table_BASS-II.csv,36,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:37,PSI-25,M11,1 cm wide PMMA 5 mm thick,,20.0,,,,,PSI-25_Experimental table_BASS-II.csv,37,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:38,PSI-25,M12,2 mm thick PMMA   2 cm wide,,21.7,,,,,PSI-25_Experimental table_BASS-II.csv,38,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:39,PSI-25,M13,4 mm thick PMMA   2 cm wide,,20.8,,,,,PSI-25_Experimental table_BASS-II.csv,39,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:40,PSI-25,M14,2mm thick PMMA   1 sided   2 cm wide,,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,40,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:41,PSI-25,M15,2 cm   4 mm 1 sided PMMA slab,,21.0,,,,,PSI-25_Experimental table_BASS-II.csv,41,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:42,PSI-25,M16,1 mm thick PMMA   2 cm wide,,19.2,,,,,PSI-25_Experimental table_BASS-II.csv,42,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:43,PSI-25,M17,2 cm wide PMMA 2 mm thick,,18.8,,,,,PSI-25_Experimental table_BASS-II.csv,43,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:44,PSI-25,M18,2 cm wide PMMA 3 mm thick,,17.9,,,,,PSI-25_Experimental table_BASS-II.csv,44,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:45,PSI-25,M19,4 mm thick   2 cm 2ide PMMA slab,,19.0,,,,,PSI-25_Experimental table_BASS-II.csv,45,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:46,PSI-25,M20,5 mm thick PMMA   2 cm wide,,18.0,,,,,PSI-25_Experimental table_BASS-II.csv,46,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:47,PSI-25,O1,"1/4"" clear rod",,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,47,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:48,PSI-25,O2,"1/4"" clear rod",,22.2,,,,,PSI-25_Experimental table_BASS-II.csv,48,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:49,PSI-25,O3a,"1/4"" clear rod",,18.0,,,,,PSI-25_Experimental table_BASS-II.csv,49,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:50,PSI-25,O3b,"1/4"" clear rod",,18.0,,,,,PSI-25_Experimental table_BASS-II.csv,50,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:51,PSI-25,O4,"3/8""clear rod",,14.8,,,,,PSI-25_Experimental table_BASS-II.csv,51,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:52,PSI-25,O5a,"1/2"" clear PMMA rod",,15.1,,,,,PSI-25_Experimental table_BASS-II.csv,52,"Initial CO (ppm): value -2.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:53,PSI-25,O5b,"1/2"" clear PMMA rod",,14.2,,,,,PSI-25_Experimental table_BASS-II.csv,53,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:54,PSI-25,O6,"1/4"" clear rod",,16.7,,,,,PSI-25_Experimental table_BASS-II.csv,54,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:55,PSI-25,O7,"1/4"" clear rod",,16.0,,,,,PSI-25_Experimental table_BASS-II.csv,55,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:56,PSI-25,O8a,"1/4"" clear rod",,15.7,,,,,PSI-25_Experimental table_BASS-II.csv,56,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:57,PSI-25,O8b,"1/4"" clear rod",,15.5,,,,,PSI-25_Experimental table_BASS-II.csv,57,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:58,PSI-25,O9,"1/4"" clear rod",,15.0,,,,,PSI-25_Experimental table_BASS-II.csv,58,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:59,PSI-25,O10,"1/4"" clear rod",,16.7,,,,,PSI-25_Experimental table_BASS-II.csv,59,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:60,PSI-25,O11,"1/4"" black rod",,15.4,,,,,PSI-25_Experimental table_BASS-II.csv,60,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:61,PSI-25,O12,"3/8"" clear rod",,13.6,,,,,PSI-25_Experimental table_BASS-II.csv,61,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:62,PSI-25,O13a,"1/2"" clear PMMA rod",,15.9,,,,,PSI-25_Experimental table_BASS-II.csv,62,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:63,PSI-25,O13b,"1/2"" clear PMMA rod",,14.6,,,,,PSI-25_Experimental table_BASS-II.csv,63,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:64,PSI-25,O14,"1/4"" black rod",,16.3,,,,,PSI-25_Experimental table_BASS-II.csv,64,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:65,PSI-25,O15a,"3/8"" clear rod",,17.1,,,,,PSI-25_Experimental table_BASS-II.csv,65,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:66,PSI-25,O15b,"3/8"" clear rod",,16.7,,,,,PSI-25_Experimental table_BASS-II.csv,66,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:67,PSI-25,O16,"3/8""clear rod",,14.5,,,,,PSI-25_Experimental table_BASS-II.csv,67,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:68,PSI-25,O17,"1/4"" clear rod",,15.1,,,,,PSI-25_Experimental table_BASS-II.csv,68,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:69,PSI-25,O18,"1/4"" clear rod",,15.2,,,,,PSI-25_Experimental table_BASS-II.csv,69,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:70,PSI-25,O19,"1/4"" clear rod",,15.3,,,,,PSI-25_Experimental table_BASS-II.csv,70,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:71,PSI-25,O20,"1/4"" clear rod",,16.5,,,,,PSI-25_Experimental table_BASS-II.csv,71,"Initial CO (ppm): value -3.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:72,PSI-25,O21,"3/8"" clear rod",,15.9,,,,,PSI-25_Experimental table_BASS-II.csv,72,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:73,PSI-25,O22,"1/2"" clear rod",,15.4,,,,,PSI-25_Experimental table_BASS-II.csv,73,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:74,PSI-25,P1,"1/4"" black rod",,17.7,,,,,PSI-25_Experimental table_BASS-II.csv,74,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:75,PSI-25,P2,"1/4"" black rod",,17.4,,,,,PSI-25_Experimental table_BASS-II.csv,75,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:76,PSI-25,P3a,"1/4"" clear rod",,17.7,,,,,PSI-25_Experimental table_BASS-II.csv,76,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:77,PSI-25,P3b,1/4 clear rod,,17.4,,,,,PSI-25_Experimental table_BASS-II.csv,77,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:78,PSI-25,P4,"3/8"" black rod",,18.5,,,,,PSI-25_Experimental table_BASS-II.csv,78,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:79,PSI-25,P5,"0.5"" black rod",,19.3,,,,,PSI-25_Experimental table_BASS-II.csv,79,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:80,PSI-25,P6,"1/4"" black rod",,18.9,,,,,PSI-25_Experimental table_BASS-II.csv,80,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:81,PSI-25,P8,"3/8"" black rod",,16.4,,,,,PSI-25_Experimental table_BASS-II.csv,81,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:82,PSI-25,P9,"0.5"" black rod",,17.6,,,,,PSI-25_Experimental table_BASS-II.csv,82,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:83,PSI-25,P10,"1/4"" black rod",,17.0,,,,,PSI-25_Experimental table_BASS-II.csv,83,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:84,PSI-25,P12,"3/8"" black rod",,17.5,,,,,PSI-25_Experimental table_BASS-II.csv,84,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:85,PSI-25,P13a,"0.5"" black rod",,20.7,,,,,PSI-25_Experimental table_BASS-II.csv,85,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:86,PSI-25,P13b,"0.5"" black rod",,20.6,,,,,PSI-25_Experimental table_BASS-II.csv,86,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:87,PSI-25,P14,1/4 blac rod,,18.4,,,,,PSI-25_Experimental table_BASS-II.csv,87,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:88,PSI-25,P15,1/4 black rod,,18.0,,,,,PSI-25_Experimental table_BASS-II.csv,88,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:89,PSI-25,P16,"1/4"" black rod",,18.2,,,,,PSI-25_Experimental table_BASS-II.csv,89,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:90,PSI-25,P17,"1/4""  black rod",,16.8,,,,,PSI-25_Experimental table_BASS-II.csv,90,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:91,PSI-25,P18,"1/4"" black rod",,20.0,,,,,PSI-25_Experimental table_BASS-II.csv,91,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:92,PSI-25,P19,"1/4"" black rod",,17.5,,,,,PSI-25_Experimental table_BASS-II.csv,92,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:93,PSI-25,P20,"1/4"" black rod",,19.0,,,,,PSI-25_Experimental table_BASS-II.csv,93,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:94,PSI-25,P21a,1/4 black rod,,16.3,,,,,PSI-25_Experimental table_BASS-II.csv,94,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:95,PSI-25,P21b,"1/4"" black rod",,16.3,,,,,PSI-25_Experimental table_BASS-II.csv,95,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:96,PSI-25,P22a,"3/8"" black rod",,20.8,,,,,PSI-25_Experimental table_BASS-II.csv,96,oxygen_pct (final O2): initial=20.80% final=0.60% — drop of 20.20 pp exceeds threshold 5.0 pp,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:97,PSI-25,P22b,"3/8"" black rod",,20.0,,,,,PSI-25_Experimental table_BASS-II.csv,97,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:98,PSI-25,P23,"3/8"" black rod",,18.2,,,,,PSI-25_Experimental table_BASS-II.csv,98,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:99,PSI-25,P24,"3/8"" black rod",,19.0,,,,,PSI-25_Experimental table_BASS-II.csv,99,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:100,PSI-25,P25,"3/8"" clear rod",,20.9,,,,,PSI-25_Experimental table_BASS-II.csv,100,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:101,PSI-25,T1,2 cm SIBAL,,18.5,,,,,PSI-25_Experimental table_BASS-II.csv,101,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:102,PSI-25,T2,2 cm SIBAL,,18.5,,,,,PSI-25_Experimental table_BASS-II.csv,102,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:103,PSI-25,T3,4 cm spherical section,,17.2,,,,,PSI-25_Experimental table_BASS-II.csv,103,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:104,PSI-25,T4,2 cm SIBAL,,18.7,,,,,PSI-25_Experimental table_BASS-II.csv,104,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:105,PSI-25,T5,2 cm SIBAL,,18.8,,,,,PSI-25_Experimental table_BASS-II.csv,105,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:106,PSI-25,T6,2 cm SIBAL,,18.8,,,,,PSI-25_Experimental table_BASS-II.csv,106,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:107,PSI-25,T7,4 cm spherical section,,17.3,,,,,PSI-25_Experimental table_BASS-II.csv,107,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:108,PSI-25,T9,2 cm SIBAL,,16.4,,,,,PSI-25_Experimental table_BASS-II.csv,108,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:109,PSI-25,T10,2 cm SIBAL,,16.4,,,,,PSI-25_Experimental table_BASS-II.csv,109,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:110,PSI-25,T11,2 cm SIBAL,,17.1,,,,,PSI-25_Experimental table_BASS-II.csv,110,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:111,PSI-25,T12,2 cm SIBAL,,16.8,,,,,PSI-25_Experimental table_BASS-II.csv,111,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:112,PSI-25,T13,2 cm SIBAL,,17.5,,,,,PSI-25_Experimental table_BASS-II.csv,112,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:113,PSI-25,T14,2 cm SIBAL,,16.9,,,,,PSI-25_Experimental table_BASS-II.csv,113,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:114,PSI-25,T15,2 cm SIBAL,,18.7,,,,,PSI-25_Experimental table_BASS-II.csv,114,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:115,PSI-25,T16,2 cm SIBAL,,17.6,,,,,PSI-25_Experimental table_BASS-II.csv,115,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:116,PSI-25,T17,2 cm SIBAL,,16.9,,,,,PSI-25_Experimental table_BASS-II.csv,116,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:117,PSI-25,T18,2 cm SIBAL,,17.4,,,,,PSI-25_Experimental table_BASS-II.csv,117,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:118,PSI-25,T19,1 cm SIBAL,,17.2,,,,,PSI-25_Experimental table_BASS-II.csv,118,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:119,PSI-25,T20,1 cm SIBAL,,17.2,,,,,PSI-25_Experimental table_BASS-II.csv,119,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:120,PSI-25,T21,1 cm SIBAL,,17.2,,,,,PSI-25_Experimental table_BASS-II.csv,120,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:121,PSI-25,T22,1 cm SIBAL,,17.1,,,,,PSI-25_Experimental table_BASS-II.csv,121,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:122,PSI-25,T23,2 cm Sibal   moved igniter,,17.2,,,,,PSI-25_Experimental table_BASS-II.csv,122,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:123,PSI-25,T24,1 cm SIBAL   top side ign,,18.2,,,,,PSI-25_Experimental table_BASS-II.csv,123,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:124,PSI-25,T25,2 cm SIBAL,,20.8,,,,,PSI-25_Experimental table_BASS-II.csv,124,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:125,PSI-25,T26,2 cm SIBAL,,20.8,,,,,PSI-25_Experimental table_BASS-II.csv,125,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:126,PSI-25,T27,1 cm SIBAL,,20.7,,,,,PSI-25_Experimental table_BASS-II.csv,126,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:127,PSI-25,T28a,1 cm SIBAL,,20.7,,,,,PSI-25_Experimental table_BASS-II.csv,127,"oxygen_pct (final O2): initial=20.70% final=0.90% — drop of 19.80 pp exceeds threshold 5.0 pp;Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:128,PSI-25,T28b,1 cm SIBAL,,20.7,,,,,PSI-25_Experimental table_BASS-II.csv,128,,parsed
+PSI-25:PSI-25_Experimental table_BASS-II.csv:129,PSI-25,T29,1 cm SIBAL,,20.7,,,,,PSI-25_Experimental table_BASS-II.csv,129,"Initial CO (ppm): value -1.0 is negative — data quality flag, raw value kept",parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:1,PSI-69,1,Methanol,,21.0,101.0183582336,,,Disruption,PSI-69_Experimental table_FLEX.csv,1,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:2,PSI-69,2,Methanol,,21.0,101.591644416,,,Extinction,PSI-69_Experimental table_FLEX.csv,2,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:3,PSI-69,3,Methanol,,21.0,101.8849536256,,,Extinction,PSI-69_Experimental table_FLEX.csv,3,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:4,PSI-69,4,Methanol,,21.0,101.32499967999999,,,Extinction,PSI-69_Experimental table_FLEX.csv,4,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:5,PSI-69,5,Methanol,,21.0,101.32499967999999,,,Extinction,PSI-69_Experimental table_FLEX.csv,5,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:6,PSI-69,6,Methanol,,21.0,101.32499967999999,,,Extinction,PSI-69_Experimental table_FLEX.csv,6,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:7,PSI-69,7,Heptane,,21.0,101.49831875839999,,,Disruption,PSI-69_Experimental table_FLEX.csv,7,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:8,PSI-69,8,Heptane,,21.0,101.6449733632,,,Disruption,PSI-69_Experimental table_FLEX.csv,8,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:9,PSI-69,9,Heptane,,21.0,101.32499967999999,,,Disruption,PSI-69_Experimental table_FLEX.csv,9,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:10,PSI-69,10,Methanol,,21.0,309.2678970496,,,Extinction,PSI-69_Experimental table_FLEX.csv,10,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:11,PSI-69,11,Methanol,,21.0,309.1479069184,,,Extinction,PSI-69_Experimental table_FLEX.csv,11,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:12,PSI-69,12,Heptane,,21.0,309.2945615232,,,Disruption,PSI-69_Experimental table_FLEX.csv,12,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:13,PSI-69,13,Methanol,,21.0,276.5372557056,,,Extinction,PSI-69_Experimental table_FLEX.csv,13,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:14,PSI-69,14,Methanol,,21.0,274.05745966079996,,,Extinction,PSI-69_Experimental table_FLEX.csv,14,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:15,PSI-69,15,Methanol,,21.0,275.52400570879996,,,Extinction,PSI-69_Experimental table_FLEX.csv,15,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:16,PSI-69,16,Methanol,,21.0,276.2572787328,,,Extinction,PSI-69_Experimental table_FLEX.csv,16,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:17,PSI-69,17,Methanol,,21.0,206.0763842176,,,Disruption,PSI-69_Experimental table_FLEX.csv,17,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:18,PSI-69,18,Heptane,,21.0,207.15629539839998,,,Extinction,PSI-69_Experimental table_FLEX.csv,18,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:19,PSI-69,19,Heptane,,34.0,71.8740885888,,,Disruption,PSI-69_Experimental table_FLEX.csv,19,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:20,PSI-69,20,Methanol,,34.0,71.927417536,,,Completion,PSI-69_Experimental table_FLEX.csv,20,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:21,PSI-69,21,Methanol,,34.0,72.0740721408,,,Disruption,PSI-69_Experimental table_FLEX.csv,21,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:22,PSI-69,22,Methanol,,34.0,72.060739904,,,Disruption,PSI-69_Experimental table_FLEX.csv,22,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:23,PSI-69,23,Heptane,,34.0,72.23405898239999,,,Disruption,PSI-69_Experimental table_FLEX.csv,23,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:24,PSI-69,24,Heptane,,34.0,72.3673813504,,,Disruption,PSI-69_Experimental table_FLEX.csv,24,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:25,PSI-69,25,Methanol,,30.0,71.6341083264,,,Completion,PSI-69_Experimental table_FLEX.csv,25,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:26,PSI-69,26,Methanol,,30.0,71.7807629312,,,Disruption,PSI-69_Experimental table_FLEX.csv,26,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:27,PSI-69,27,Heptane,,30.0,72.08740437760001,,,Disruption,PSI-69_Experimental table_FLEX.csv,27,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:28,PSI-69,28,Heptane,,30.0,71.9540820096,,,Disruption,PSI-69_Experimental table_FLEX.csv,28,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:29,PSI-69,29,Methanol,,30.0,102.2449240192,,,Completion,PSI-69_Experimental table_FLEX.csv,29,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:30,PSI-69,30,Methanol,,30.0,102.5515654656,,,Extinction,PSI-69_Experimental table_FLEX.csv,30,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:31,PSI-69,31,Heptane,,30.0,102.72488454399999,,,Disruption,PSI-69_Experimental table_FLEX.csv,31,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:32,PSI-69,32,Heptane,,30.0,102.791545728,,,Completion,PSI-69_Experimental table_FLEX.csv,32,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:33,PSI-69,33,Methanol,,21.0,101.924950336,,,Extinction,PSI-69_Experimental table_FLEX.csv,33,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:34,PSI-69,34,Methanol,,21.0,102.3515819136,,,Extinction,PSI-69_Experimental table_FLEX.csv,34,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:35,PSI-69,35,Heptane,,21.0,102.4049108608,,,Extinction,PSI-69_Experimental table_FLEX.csv,35,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:36,PSI-69,36,Methanol,,20.0,71.860756352,,,Extinction,PSI-69_Experimental table_FLEX.csv,36,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:37,PSI-69,37,Methanol,,34.0,71.2341412224,,,Disruption,PSI-69_Experimental table_FLEX.csv,37,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:38,PSI-69,38,Methanol,,34.0,71.2474734592,,,Disruption,PSI-69_Experimental table_FLEX.csv,38,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:39,PSI-69,39,Heptane,,34.0,71.31413464319999,,,Disruption,PSI-69_Experimental table_FLEX.csv,39,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:40,PSI-69,40,Methanol,,30.0,71.3407991168,,,Disruption,PSI-69_Experimental table_FLEX.csv,40,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:41,PSI-69,41,Methanol,,30.0,71.2341412224,,,Disruption,PSI-69_Experimental table_FLEX.csv,41,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:42,PSI-69,42,Heptane,,30.0,71.32746688,,,Disruption,PSI-69_Experimental table_FLEX.csv,42,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:43,PSI-69,43,Heptane,,30.0,71.31413464319999,,,Disruption,PSI-69_Experimental table_FLEX.csv,43,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:44,PSI-69,44,Methanol,,30.0,102.23159178239999,,,Disruption,PSI-69_Experimental table_FLEX.csv,44,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:45,PSI-69,45,Methanol,,30.0,102.4315753344,,,Extinction,PSI-69_Experimental table_FLEX.csv,45,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:46,PSI-69,46,Methanol,,21.0,102.591562176,,,Disruption,PSI-69_Experimental table_FLEX.csv,46,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:47,PSI-69,47,Heptane,,21.0,102.6715555968,,,Completion,PSI-69_Experimental table_FLEX.csv,47,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:48,PSI-69,48,Methanol,,21.0,102.48490428160001,,,Disruption,PSI-69_Experimental table_FLEX.csv,48,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:49,PSI-69,49,Heptane,,21.0,101.9782792832,,,Extinction,PSI-69_Experimental table_FLEX.csv,49,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:50,PSI-69,50,Heptane,,21.0,102.6715555968,,,Extinction,PSI-69_Experimental table_FLEX.csv,50,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:51,PSI-69,51,Heptane,,21.0,102.84487467519999,,,Completion,PSI-69_Experimental table_FLEX.csv,51,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:52,PSI-69,52,Heptane,,30.0,102.8048779648,,,Disruption,PSI-69_Experimental table_FLEX.csv,52,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:53,PSI-69,53,Heptane,,21.0,102.6848878336,,,Disruption,PSI-69_Experimental table_FLEX.csv,53,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:54,PSI-69,54,Methanol,,20.0,72.1807300352,,,Extinction,PSI-69_Experimental table_FLEX.csv,54,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:55,PSI-69,55,Methanol,,20.0,72.3407168768,,,Disruption,PSI-69_Experimental table_FLEX.csv,55,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:56,PSI-69,56,Heptane,,20.0,72.54070042880001,,,Completion,PSI-69_Experimental table_FLEX.csv,56,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:57,PSI-69,57,Heptane,,20.0,72.5806971392,,,Extinction,PSI-69_Experimental table_FLEX.csv,57,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:58,PSI-69,58,Methanol,,18.0,103.0981871744,,,Extinction,PSI-69_Experimental table_FLEX.csv,58,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:59,PSI-69,59,Methanol,,18.0,102.5515654656,,,Extinction,PSI-69_Experimental table_FLEX.csv,59,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:60,PSI-69,60,Methanol,,18.0,103.1515161216,,,Extinction,PSI-69_Experimental table_FLEX.csv,60,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:61,PSI-69,61,Methanol,,18.0,103.2048450688,,,Extinction,PSI-69_Experimental table_FLEX.csv,61,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:62,PSI-69,62,Heptane,,18.0,101.56497994239999,,,Extinction,PSI-69_Experimental table_FLEX.csv,62,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:63,PSI-69,63,Heptane,,18.0,102.3382496768,,,Completion,PSI-69_Experimental table_FLEX.csv,63,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:64,PSI-69,64,Heptane,,18.0,101.9382825728,,,Extinction,PSI-69_Experimental table_FLEX.csv,64,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:65,PSI-69,65,Methanol,,15.0,102.11160165119999,,,Extinction,PSI-69_Experimental table_FLEX.csv,65,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:66,PSI-69,66,Methanol,,15.0,102.23159178239999,,,Extinction,PSI-69_Experimental table_FLEX.csv,66,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:67,PSI-69,67,Methanol,,15.0,102.3515819136,,,Extinction,PSI-69_Experimental table_FLEX.csv,67,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:68,PSI-69,68,Methanol,,15.0,102.49823651839999,,,Extinction,PSI-69_Experimental table_FLEX.csv,68,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:69,PSI-69,69,Heptane,,14.000000000000002,102.2715884928,,,Completion,PSI-69_Experimental table_FLEX.csv,69,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:70,PSI-69,70,Heptane,,15.0,101.458322048,,,Extinction,PSI-69_Experimental table_FLEX.csv,70,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:71,PSI-69,71,Methanol,,15.0,102.4315753344,,,Extinction,PSI-69_Experimental table_FLEX.csv,71,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:72,PSI-69,72,Heptane,,15.0,102.0182759936,,,Completion,PSI-69_Experimental table_FLEX.csv,72,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:73,PSI-69,73,Heptane,,15.0,101.458322048,,,Extinction,PSI-69_Experimental table_FLEX.csv,73,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:74,PSI-69,74,Heptane,,15.0,102.11160165119999,,,Completion,PSI-69_Experimental table_FLEX.csv,74,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:75,PSI-69,75,Methanol,,13.0,102.7648812544,,,Extinction,PSI-69_Experimental table_FLEX.csv,75,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:76,PSI-69,76,Methanol,,13.0,102.591562176,,,Extinction,PSI-69_Experimental table_FLEX.csv,76,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:77,PSI-69,77,Methanol,,14.000000000000002,102.44490757119999,,,Extinction,PSI-69_Experimental table_FLEX.csv,77,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:78,PSI-69,78,Methanol,,14.000000000000002,102.124933888,,,Extinction,PSI-69_Experimental table_FLEX.csv,78,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:79,PSI-69,79,Heptane,,13.0,102.4049108608,,,Extinction,PSI-69_Experimental table_FLEX.csv,79,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:80,PSI-69,80,Heptane,,13.0,102.65822336,,,Extinction,PSI-69_Experimental table_FLEX.csv,80,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:81,PSI-69,81,Heptane,,13.0,102.6848878336,,,Extinction,PSI-69_Experimental table_FLEX.csv,81,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:82,PSI-69,82,Methanol,,13.0,101.9382825728,,,Extinction,PSI-69_Experimental table_FLEX.csv,82,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:83,PSI-69,83,Methanol,,12.0,102.924868096,,,Extinction,PSI-69_Experimental table_FLEX.csv,83,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:84,PSI-69,84,Methanol,,12.0,102.2849207296,,,Extinction,PSI-69_Experimental table_FLEX.csv,84,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:85,PSI-69,85,Methanol,,12.0,102.81821020160001,,,Extinction,PSI-69_Experimental table_FLEX.csv,85,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:86,PSI-69,86,Methanol,,12.0,102.65822336,,,Extinction,PSI-69_Experimental table_FLEX.csv,86,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:87,PSI-69,87,Methanol,,12.0,102.81821020160001,,,Extinction,PSI-69_Experimental table_FLEX.csv,87,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:88,PSI-69,88,Methanol,,25.0,71.6607728,,,Disruption,PSI-69_Experimental table_FLEX.csv,88,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:89,PSI-69,89,Methanol,,25.0,71.64744056319999,,,Disruption,PSI-69_Experimental table_FLEX.csv,89,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:90,PSI-69,90,Methanol,,25.0,71.8874208256,,,Disruption,PSI-69_Experimental table_FLEX.csv,90,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:91,PSI-69,91,Methanol,,25.0,71.76743069439999,,,Disruption,PSI-69_Experimental table_FLEX.csv,91,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:92,PSI-69,92,Heptane,,25.0,71.50078595839999,,,Disruption,PSI-69_Experimental table_FLEX.csv,92,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:93,PSI-69,93,Heptane,,25.0,71.6341083264,,,Disruption,PSI-69_Experimental table_FLEX.csv,93,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:94,PSI-69,94,Heptane,,24.0,71.14081556480001,,,Extinction,PSI-69_Experimental table_FLEX.csv,94,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:95,PSI-69,95,Heptane,,24.0,71.2474734592,,,Extinction,PSI-69_Experimental table_FLEX.csv,95,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:96,PSI-69,96,Heptane,,24.0,71.2474734592,,,Disruption,PSI-69_Experimental table_FLEX.csv,96,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:97,PSI-69,97,Methanol,,23.0,71.2208089856,,,Completion,PSI-69_Experimental table_FLEX.csv,97,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:98,PSI-69,98,Methanol,,23.0,71.6074438528,,,Extinction,PSI-69_Experimental table_FLEX.csv,98,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:99,PSI-69,99,Methanol,,23.0,71.32746688,,,Extinction,PSI-69_Experimental table_FLEX.csv,99,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:100,PSI-69,100,Heptane,,23.0,71.5541149056,,,Extinction,PSI-69_Experimental table_FLEX.csv,100,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:101,PSI-69,101,Heptane,,23.0,71.8207596416,,,Extinction,PSI-69_Experimental table_FLEX.csv,101,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:102,PSI-69,102,Heptane,,21.0,71.2208089856,,,Extinction,PSI-69_Experimental table_FLEX.csv,102,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:103,PSI-69,103,Heptane,,21.0,71.2341412224,,,Extinction,PSI-69_Experimental table_FLEX.csv,103,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:104,PSI-69,104,Methanol,,23.0,71.2074767488,,,Extinction,PSI-69_Experimental table_FLEX.csv,104,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:105,PSI-69,105,Methanol,,23.0,71.2741379328,,,Disruption,PSI-69_Experimental table_FLEX.csv,105,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:106,PSI-69,106,Methanol,,23.0,71.76743069439999,,,Disruption,PSI-69_Experimental table_FLEX.csv,106,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:107,PSI-69,107,Methanol,,23.0,71.32746688,,,Disruption,PSI-69_Experimental table_FLEX.csv,107,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:108,PSI-69,108,Methanol,,23.0,71.76743069439999,,,Completion,PSI-69_Experimental table_FLEX.csv,108,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:109,PSI-69,109,Methanol,,21.0,71.527450432,,,Extinction,PSI-69_Experimental table_FLEX.csv,109,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:110,PSI-69,110,Methanol,,21.0,71.59411161599999,,,Extinction,PSI-69_Experimental table_FLEX.csv,110,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:111,PSI-69,111,Methanol,,21.0,71.5807793792,,,Completion,PSI-69_Experimental table_FLEX.csv,111,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:112,PSI-69,112,Methanol,,21.0,70.7541806976,,,Completion,PSI-69_Experimental table_FLEX.csv,112,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:113,PSI-69,113,Methanol,,20.0,71.2741379328,,,Extinction,PSI-69_Experimental table_FLEX.csv,113,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:114,PSI-69,114,Methanol,,20.0,0.0,,,Extinction,PSI-69_Experimental table_FLEX.csv,114,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:115,PSI-69,115,Methanol,,20.0,71.43412477439999,,,Extinction,PSI-69_Experimental table_FLEX.csv,115,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:116,PSI-69,116,Methanol,,20.0,71.50078595839999,,,Extinction,PSI-69_Experimental table_FLEX.csv,116,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:117,PSI-69,117,Heptane,,20.0,70.8075096448,,,Extinction,PSI-69_Experimental table_FLEX.csv,117,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:118,PSI-69,118,Heptane,,20.0,71.03415767039999,,,Extinction,PSI-69_Experimental table_FLEX.csv,118,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:119,PSI-69,119,Heptane,,18.0,71.0074931968,,,Extinction,PSI-69_Experimental table_FLEX.csv,119,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:120,PSI-69,120,Heptane,,18.0,70.99416096,,,Extinction,PSI-69_Experimental table_FLEX.csv,120,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:121,PSI-69,121,Methanol,,18.0,70.1675622784,,,Extinction,PSI-69_Experimental table_FLEX.csv,121,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:122,PSI-69,122,Methanol,,18.0,70.8208418816,,,Extinction,PSI-69_Experimental table_FLEX.csv,122,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:123,PSI-69,123,Methanol,,18.0,70.927499776,,,Extinction,PSI-69_Experimental table_FLEX.csv,123,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:124,PSI-69,124,Methanol,,18.0,70.98082872319999,,,Extinction,PSI-69_Experimental table_FLEX.csv,124,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:125,PSI-69,125,Methanol,,17.0,71.6207760896,,,Extinction,PSI-69_Experimental table_FLEX.csv,125,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:126,PSI-69,126,Methanol,,17.0,71.4741214848,,,Extinction,PSI-69_Experimental table_FLEX.csv,126,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:127,PSI-69,127,Methanol,,17.0,71.5541149056,,,Extinction,PSI-69_Experimental table_FLEX.csv,127,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:128,PSI-69,128,Methanol,,17.0,71.6341083264,,,Extinction,PSI-69_Experimental table_FLEX.csv,128,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:129,PSI-69,129,Heptane,,17.0,71.4874537216,,,Extinction,PSI-69_Experimental table_FLEX.csv,129,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:130,PSI-69,130,Heptane,,17.0,71.6207760896,,,Extinction,PSI-69_Experimental table_FLEX.csv,130,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:131,PSI-69,131,Heptane,,24.0,101.8449569152,,,Disruption,PSI-69_Experimental table_FLEX.csv,131,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:132,PSI-69,132,Heptane,,24.0,102.0182759936,,,Disruption,PSI-69_Experimental table_FLEX.csv,132,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:133,PSI-69,133,Heptane,,24.0,102.2182595456,,,Disruption,PSI-69_Experimental table_FLEX.csv,133,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:134,PSI-69,134,Heptane,,24.0,102.2849207296,,,Extinction,PSI-69_Experimental table_FLEX.csv,134,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:135,PSI-69,135,Heptane,,24.0,102.4182430976,,,Completion,PSI-69_Experimental table_FLEX.csv,135,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:136,PSI-69,136,Heptane,,24.0,102.4049108608,,,Completion,PSI-69_Experimental table_FLEX.csv,136,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:137,PSI-69,137,Heptane,,24.0,102.4182430976,,,Disruption,PSI-69_Experimental table_FLEX.csv,137,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:138,PSI-69,138,Heptane,,24.0,102.4715720448,,,Disruption,PSI-69_Experimental table_FLEX.csv,138,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:139,PSI-69,139,Heptane,,24.0,102.391578624,,,Disruption,PSI-69_Experimental table_FLEX.csv,139,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:140,PSI-69,140,Methanol,,15.0,71.127483328,,,Extinction,PSI-69_Experimental table_FLEX.csv,140,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:141,PSI-69,141,Methanol,,15.0,71.2074767488,,,Extinction,PSI-69_Experimental table_FLEX.csv,141,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:142,PSI-69,142,Methanol,,15.0,71.26080569599999,,,Extinction,PSI-69_Experimental table_FLEX.csv,142,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:143,PSI-69,143,Methanol,,15.0,71.2874701696,,,Extinction,PSI-69_Experimental table_FLEX.csv,143,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:144,PSI-69,144,Methanol,,20.0,101.5783121792,,,Extinction,PSI-69_Experimental table_FLEX.csv,144,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:145,PSI-69,145,Methanol,,20.0,101.791627968,,,Extinction,PSI-69_Experimental table_FLEX.csv,145,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:146,PSI-69,146,Methanol,,20.0,102.058272704,,,Extinction,PSI-69_Experimental table_FLEX.csv,146,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:147,PSI-69,147,Methanol,,17.0,71.42079253760001,,,Extinction,PSI-69_Experimental table_FLEX.csv,147,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:148,PSI-69,148,Heptane,,20.0,101.9116180992,,,Disruption,PSI-69_Experimental table_FLEX.csv,148,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:149,PSI-69,149,Heptane,,20.0,102.15159836160001,,,Disruption,PSI-69_Experimental table_FLEX.csv,149,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:150,PSI-69,150,Heptane,,20.0,102.3382496768,,,Extinction,PSI-69_Experimental table_FLEX.csv,150,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:151,PSI-69,151,Methanol,,18.0,101.65830559999999,,,Completion,PSI-69_Experimental table_FLEX.csv,151,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:152,PSI-69,152,Methanol,,18.0,101.99161151999999,,,Extinction,PSI-69_Experimental table_FLEX.csv,152,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:153,PSI-69,153,Methanol,,18.0,102.0716049408,,,Extinction,PSI-69_Experimental table_FLEX.csv,153,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:154,PSI-69,154,Heptane,,18.0,101.6316411264,,,Extinction,PSI-69_Experimental table_FLEX.csv,154,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:155,PSI-69,155,Heptane,,18.0,101.9782792832,,,Extinction,PSI-69_Experimental table_FLEX.csv,155,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:156,PSI-69,156,Heptane,,18.0,102.0849371776,,,Completion,PSI-69_Experimental table_FLEX.csv,156,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:157,PSI-69,157,Methanol,,16.0,101.6049766528,,,Extinction,PSI-69_Experimental table_FLEX.csv,157,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:158,PSI-69,158,Methanol,,16.0,101.9116180992,,,Extinction,PSI-69_Experimental table_FLEX.csv,158,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:159,PSI-69,159,Methanol,,16.0,102.058272704,,,Extinction,PSI-69_Experimental table_FLEX.csv,159,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:160,PSI-69,160,Methanol,,16.0,102.3382496768,,,Extinction,PSI-69_Experimental table_FLEX.csv,160,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:161,PSI-69,161,Methanol,,15.0,101.76496349439999,,,Extinction,PSI-69_Experimental table_FLEX.csv,161,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:162,PSI-69,162,Methanol,,15.0,101.9116180992,,,Extinction,PSI-69_Experimental table_FLEX.csv,162,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:163,PSI-69,163,Methanol,,15.0,102.11160165119999,,,Extinction,PSI-69_Experimental table_FLEX.csv,163,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:164,PSI-69,164,Methanol,,15.0,102.1382661248,,,Extinction,PSI-69_Experimental table_FLEX.csv,164,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:165,PSI-69,165,Heptane,,18.0,102.0449404672,,,Extinction,PSI-69_Experimental table_FLEX.csv,165,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:166,PSI-69,166,Methanol,,14.000000000000002,101.43165757439999,,,Extinction,PSI-69_Experimental table_FLEX.csv,166,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:167,PSI-69,167,Methanol,,14.000000000000002,101.53831546880001,,,Extinction,PSI-69_Experimental table_FLEX.csv,167,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:168,PSI-69,168,Methanol,,21.0,101.77829573119999,,,Disruption,PSI-69_Experimental table_FLEX.csv,168,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:169,PSI-69,169,Methanol,,21.0,102.1382661248,,,Extinction,PSI-69_Experimental table_FLEX.csv,169,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:170,PSI-69,170,Methanol,,21.0,102.2182595456,,,Extinction,PSI-69_Experimental table_FLEX.csv,170,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:171,PSI-69,171,Heptane,,18.0,101.3116674432,,,Extinction,PSI-69_Experimental table_FLEX.csv,171,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:172,PSI-69,172,Heptane,,18.0,101.591644416,,,Extinction,PSI-69_Experimental table_FLEX.csv,172,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:173,PSI-69,173,Heptane,,18.0,101.6049766528,,,Disruption,PSI-69_Experimental table_FLEX.csv,173,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:174,PSI-69,174,Heptane,,24.0,70.8875030656,,,Disruption,PSI-69_Experimental table_FLEX.csv,174,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:175,PSI-69,175,Heptane,,24.0,70.9408320128,,,Disruption,PSI-69_Experimental table_FLEX.csv,175,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:176,PSI-69,176,Methanol,,24.0,71.5807793792,,,Extinction,PSI-69_Experimental table_FLEX.csv,176,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:177,PSI-69,177,Methanol,,24.0,71.59411161599999,,,Extinction,PSI-69_Experimental table_FLEX.csv,177,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:178,PSI-69,178,Heptane,,23.0,71.14081556480001,,,Extinction,PSI-69_Experimental table_FLEX.csv,178,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:179,PSI-69,179,Heptane,,23.0,71.2474734592,,,Disruption,PSI-69_Experimental table_FLEX.csv,179,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:180,PSI-69,180,Heptane,,19.0,101.11168389119999,,,Extinction,PSI-69_Experimental table_FLEX.csv,180,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:181,PSI-69,181,Heptane,,19.0,101.2050095488,,,Extinction,PSI-69_Experimental table_FLEX.csv,181,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:182,PSI-69,182,Heptane,,19.0,101.191677312,,,Disruption,PSI-69_Experimental table_FLEX.csv,182,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:183,PSI-69,183,Methanol,,23.0,71.2474734592,,,Extinction,PSI-69_Experimental table_FLEX.csv,183,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:184,PSI-69,184,Methanol,,23.0,71.3407991168,,,Extinction,PSI-69_Experimental table_FLEX.csv,184,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:185,PSI-69,185,Methanol,,23.0,71.35413135360001,,,Extinction,PSI-69_Experimental table_FLEX.csv,185,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:186,PSI-69,186,Methanol,,23.0,71.4874537216,,,Extinction,PSI-69_Experimental table_FLEX.csv,186,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:187,PSI-69,187,Methanol,,19.0,101.058354944,,,Extinction,PSI-69_Experimental table_FLEX.csv,187,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:188,PSI-69,188,Methanol,,19.0,101.0716871808,,,Extinction,PSI-69_Experimental table_FLEX.csv,188,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:189,PSI-69,189,Methanol,,18.0,101.4849865216,,,Extinction,PSI-69_Experimental table_FLEX.csv,189,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:190,PSI-69,190,Methanol,,18.0,101.9382825728,,,Extinction,PSI-69_Experimental table_FLEX.csv,190,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:191,PSI-69,191,Methanol,,18.0,102.0316082304,,,Extinction,PSI-69_Experimental table_FLEX.csv,191,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:192,PSI-69,192,Methanol,,17.0,101.258338496,,,Extinction,PSI-69_Experimental table_FLEX.csv,192,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:193,PSI-69,193,Methanol,,17.0,101.2050095488,,,Extinction,PSI-69_Experimental table_FLEX.csv,193,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:194,PSI-69,194,Heptane,,17.0,100.25842073599999,,,Extinction,PSI-69_Experimental table_FLEX.csv,194,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:195,PSI-69,195,Heptane,,17.0,100.32508192,,,Extinction,PSI-69_Experimental table_FLEX.csv,195,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:196,PSI-69,196,Heptane,,20.0,101.11168389119999,,,Extinction,PSI-69_Experimental table_FLEX.csv,196,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:197,PSI-69,197,Heptane,,20.0,101.2983352064,,,Extinction,PSI-69_Experimental table_FLEX.csv,197,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:198,PSI-69,198,Heptane,,20.0,101.3383319168,,,Disruption,PSI-69_Experimental table_FLEX.csv,198,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:199,PSI-69,199,Methanol,,20.0,100.525065472,,,Extinction,PSI-69_Experimental table_FLEX.csv,199,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:200,PSI-69,200,Methanol,,20.0,100.8050424448,,,Extinction,PSI-69_Experimental table_FLEX.csv,200,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:201,PSI-69,201,Methanol,,20.0,100.9117003392,,,Extinction,PSI-69_Experimental table_FLEX.csv,201,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:202,PSI-69,202,Methanol,,21.0,101.3516641536,,,Extinction,PSI-69_Experimental table_FLEX.csv,202,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:203,PSI-69,203,Methanol,,21.0,101.53831546880001,,,Extinction,PSI-69_Experimental table_FLEX.csv,203,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:204,PSI-69,204,Heptane,,21.0,100.858371392,,,Disruption,PSI-69_Experimental table_FLEX.csv,204,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:205,PSI-69,205,Heptane,,21.0,100.9650292864,,,Disruption,PSI-69_Experimental table_FLEX.csv,205,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:206,PSI-69,206,Heptane,,21.0,101.3516641536,,,Disruption,PSI-69_Experimental table_FLEX.csv,206,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:207,PSI-69,207,Heptane,,21.0,101.6849700736,,,Completion,PSI-69_Experimental table_FLEX.csv,207,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:208,PSI-69,208,Heptane,,21.0,101.71163454719999,,,Completion,PSI-69_Experimental table_FLEX.csv,208,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:209,PSI-69,209,Heptane,,16.0,101.2983352064,,,Extinction,PSI-69_Experimental table_FLEX.csv,209,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:210,PSI-69,210,Heptane,,16.0,101.2983352064,,,Extinction,PSI-69_Experimental table_FLEX.csv,210,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:211,PSI-69,211,Heptane,,16.0,101.3116674432,,,Extinction,PSI-69_Experimental table_FLEX.csv,211,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:212,PSI-69,212,Heptane,,15.0,101.858289152,,,Extinction,PSI-69_Experimental table_FLEX.csv,212,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:213,PSI-69,213,Heptane,,14.000000000000002,101.2983352064,,,Extinction,PSI-69_Experimental table_FLEX.csv,213,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:214,PSI-69,214,Heptane,,14.000000000000002,101.3116674432,,,Extinction,PSI-69_Experimental table_FLEX.csv,214,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:215,PSI-69,215,Methanol,,14.000000000000002,101.0050259968,,,Extinction,PSI-69_Experimental table_FLEX.csv,215,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:216,PSI-69,216,Methanol,,14.000000000000002,101.09835165439999,,,Extinction,PSI-69_Experimental table_FLEX.csv,216,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:217,PSI-69,217,Methanol,,13.0,101.2450062592,,,Extinction,PSI-69_Experimental table_FLEX.csv,217,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:218,PSI-69,218,Methanol,,13.0,101.4049931008,,,Extinction,PSI-69_Experimental table_FLEX.csv,218,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:219,PSI-69,219,Methanol,,12.0,101.53831546880001,,,Extinction,PSI-69_Experimental table_FLEX.csv,219,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:220,PSI-69,220,Methanol,,12.0,101.5783121792,,,Extinction,PSI-69_Experimental table_FLEX.csv,220,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:221,PSI-69,221,Methanol,,12.0,101.81829244160001,,,Extinction,PSI-69_Experimental table_FLEX.csv,221,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:222,PSI-69,222,Methanol,,20.0,101.2183417856,,,Extinction,PSI-69_Experimental table_FLEX.csv,222,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:223,PSI-69,223,Methanol,,20.0,101.2716707328,,,Extinction,PSI-69_Experimental table_FLEX.csv,223,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:224,PSI-69,224,Heptane,,20.0,100.6983845504,,,Completion,PSI-69_Experimental table_FLEX.csv,224,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:225,PSI-69,225,Methanol,,19.0,100.4450720512,,,Extinction,PSI-69_Experimental table_FLEX.csv,225,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:226,PSI-69,226,Methanol,,18.0,101.2183417856,,,Extinction,PSI-69_Experimental table_FLEX.csv,226,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:227,PSI-69,227,Methanol,,18.0,101.3649963904,,,Extinction,PSI-69_Experimental table_FLEX.csv,227,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:228,PSI-69,228,Heptane,,21.0,102.3115852032,,,Extinction,PSI-69_Experimental table_FLEX.csv,228,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:229,PSI-69,229,Heptane,,21.0,102.4049108608,,,Disruption,PSI-69_Experimental table_FLEX.csv,229,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:230,PSI-69,230,Heptane,,21.0,102.5515654656,,,Extinction,PSI-69_Experimental table_FLEX.csv,230,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:231,PSI-69,231,Heptane,,19.0,101.16501283839999,,,Disruption,PSI-69_Experimental table_FLEX.csv,231,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:232,PSI-69,232,Heptane,,18.0,101.81829244160001,,,Extinction,PSI-69_Experimental table_FLEX.csv,232,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:233,PSI-69,233,Heptane,,18.0,102.11160165119999,,,Completion,PSI-69_Experimental table_FLEX.csv,233,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:234,PSI-69,234,Heptane,,18.0,102.191595072,,,Completion,PSI-69_Experimental table_FLEX.csv,234,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:235,PSI-69,235,Heptane,,17.0,101.23167402239999,,,Extinction,PSI-69_Experimental table_FLEX.csv,235,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:236,PSI-69,236,Heptane,,17.0,101.23167402239999,,,Extinction,PSI-69_Experimental table_FLEX.csv,236,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:237,PSI-69,237,Heptane,,17.0,101.2716707328,,,Disruption,PSI-69_Experimental table_FLEX.csv,237,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:238,PSI-69,238,Heptane,,17.0,101.2983352064,,,Completion,PSI-69_Experimental table_FLEX.csv,238,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:239,PSI-69,239,Methanol,,17.0,100.5517299456,,,Extinction,PSI-69_Experimental table_FLEX.csv,239,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:240,PSI-69,240,Methanol,,17.0,100.92503257599999,,,Extinction,PSI-69_Experimental table_FLEX.csv,240,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:241,PSI-69,241,Methanol,,16.0,101.3116674432,,,Extinction,PSI-69_Experimental table_FLEX.csv,241,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:242,PSI-69,242,Methanol,,16.0,101.458322048,,,Extinction,PSI-69_Experimental table_FLEX.csv,242,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:243,PSI-69,243,Heptane,,16.0,101.04502270719999,,,Extinction,PSI-69_Experimental table_FLEX.csv,243,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:244,PSI-69,244,Methanol,,15.0,100.7383812608,,,Extinction,PSI-69_Experimental table_FLEX.csv,244,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:245,PSI-69,245,Methanol,,15.0,100.8850358656,,,Extinction,PSI-69_Experimental table_FLEX.csv,245,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:246,PSI-69,246,Methanol,,14.000000000000002,101.2183417856,,,Extinction,PSI-69_Experimental table_FLEX.csv,246,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:247,PSI-69,247,Methanol,,14.000000000000002,101.2983352064,,,Extinction,PSI-69_Experimental table_FLEX.csv,247,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:248,PSI-69,248,Methanol,,13.0,101.791627968,,,Extinction,PSI-69_Experimental table_FLEX.csv,248,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:249,PSI-69,249,Heptane,,24.0,71.194144512,,,Extinction,PSI-69_Experimental table_FLEX.csv,249,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:250,PSI-69,250,Heptane,,23.0,70.9541642496,,,Completion,PSI-69_Experimental table_FLEX.csv,250,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:251,PSI-69,251,Methanol,,24.0,71.2341412224,,,Extinction,PSI-69_Experimental table_FLEX.csv,251,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:252,PSI-69,252,Methanol,,24.0,71.2741379328,,,Disruption,PSI-69_Experimental table_FLEX.csv,252,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:253,PSI-69,253,Methanol,,23.0,70.8875030656,,,Extinction,PSI-69_Experimental table_FLEX.csv,253,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:254,PSI-69,254,Methanol,,23.0,70.9008353024,,,Disruption,PSI-69_Experimental table_FLEX.csv,254,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:255,PSI-69,255,Methanol,,21.0,70.9141675392,,,Extinction,PSI-69_Experimental table_FLEX.csv,255,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:256,PSI-69,256,Methanol,,21.0,70.8208418816,,,Extinction,PSI-69_Experimental table_FLEX.csv,256,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:257,PSI-69,257,Methanol,,21.0,70.8208418816,,,Extinction,PSI-69_Experimental table_FLEX.csv,257,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:258,PSI-69,258,Heptane,,21.0,70.6075260928,,,Extinction,PSI-69_Experimental table_FLEX.csv,258,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:259,PSI-69,259,Heptane,,21.0,70.52753267199999,,,Extinction,PSI-69_Experimental table_FLEX.csv,259,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:260,PSI-69,260,Heptane,,20.0,70.99416096,,,Extinction,PSI-69_Experimental table_FLEX.csv,260,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:261,PSI-69,261,Heptane,,20.0,70.927499776,,,Extinction,PSI-69_Experimental table_FLEX.csv,261,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:262,PSI-69,262,Methanol,,20.0,70.3408813568,,,Extinction,PSI-69_Experimental table_FLEX.csv,262,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:263,PSI-69,263,Methanol,,20.0,70.3808780672,,,Extinction,PSI-69_Experimental table_FLEX.csv,263,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:264,PSI-69,264,Methanol,,18.0,70.98082872319999,,,Extinction,PSI-69_Experimental table_FLEX.csv,264,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:265,PSI-69,265,Methanol,,18.0,71.04748990719999,,,Extinction,PSI-69_Experimental table_FLEX.csv,265,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:266,PSI-69,266,Methanol,,18.0,71.0874866176,,,Extinction,PSI-69_Experimental table_FLEX.csv,266,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:267,PSI-69,267,Heptane,,18.0,70.394210304,,,Extinction,PSI-69_Experimental table_FLEX.csv,267,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:268,PSI-69,268,Heptane,,18.0,70.70085175039999,,,Extinction,PSI-69_Experimental table_FLEX.csv,268,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:269,PSI-69,269,Heptane,,17.0,70.9541642496,,,Extinction,PSI-69_Experimental table_FLEX.csv,269,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:270,PSI-69,270,Heptane,,17.0,70.99416096,,,Completion,PSI-69_Experimental table_FLEX.csv,270,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:271,PSI-69,271,Methanol,,17.0,70.7141839872,,,Extinction,PSI-69_Experimental table_FLEX.csv,271,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:272,PSI-69,272,Methanol,,17.0,70.860838592,,,Extinction,PSI-69_Experimental table_FLEX.csv,272,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:273,PSI-69,273,Heptane,,21.0,101.9516148096,,,Extinction,PSI-69_Experimental table_FLEX.csv,273,,parsed
+PSI-69:PSI-69_Experimental table_FLEX.csv:274,PSI-69,274,Heptane,,21.0,102.15159836160001,,,Extinction,PSI-69_Experimental table_FLEX.csv,274,,parsed

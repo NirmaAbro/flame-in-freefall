@@ -1,0 +1,47 @@
+[
+  {
+    "id": "PSI-25",
+    "psi_id": "PSI-25",
+    "acronym": "BASS-II",
+    "title": "Burning and Suppression of Solids - II (BASS-II)",
+    "summary": null,
+    "hardware": "Microgravity Science Glovebox (MSG)",
+    "hardware_family": "MSG",
+    "safety_function": null,
+    "doi": "10.60555/4qc4-de67",
+    "source_url": null,
+    "project_type": null,
+    "publications": [],
+    "files": []
+  },
+  {
+    "id": "PSI-69",
+    "psi_id": "PSI-69",
+    "acronym": "FLEX",
+    "title": "Flame Extinguishment Experiment (FLEX)",
+    "summary": null,
+    "hardware": null,
+    "hardware_family": null,
+    "safety_function": null,
+    "doi": null,
+    "source_url": null,
+    "project_type": null,
+    "publications": [],
+    "files": []
+  },
+  {
+    "id": "PSI-68",
+    "psi_id": "PSI-68",
+    "acronym": "FLEX-2",
+    "title": "Flame Extinguishment Experiment - 2 (FLEX-2)",
+    "summary": "Parameter ranges as stated in the PSI-68 Experimental Table (parameter-space summary, not individual test rows). Fuel types tested: IsoOctane (pure), n-Octane (pure), Heptane (pure), Decane (pure), Ethanol (pure), Propanol (95%) Glycerol (5%) (mixture), Heptane (50%) IsoOctane (50%) (mixture), Propanol (80%) Glycerol (20%) (mixture). Ambient gas mixture: 'O2/N2 or O2/He'. Oxygen mole fraction: '0.17; 0.21; 0.25; 0.3'. Ambient pressure (atm): '0.5; 1.0; 1.5; 2.0; or 3.0'. Ambient temperature (C): 25. Flow velocity (cm/s): '0.1 - 5'. Initial droplet diameter (mm): '1.5 - 5'. No individual test run rows were present in this file; no rows were loaded into the tests table.",
+    "hardware": null,
+    "hardware_family": null,
+    "safety_function": null,
+    "doi": null,
+    "source_url": null,
+    "project_type": null,
+    "publications": [],
+    "files": []
+  }
+]

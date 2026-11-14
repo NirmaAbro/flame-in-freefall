@@ -1,0 +1,21 @@
+{
+  "psi_id": "PSI-25",
+  "status": "approved",
+  "fields": {
+    "test_label": {
+      "column": "Test #",
+      "unit": null,
+      "parse": "text"
+    },
+    "fuel": {
+      "column": "Fuel Sample Material",
+      "unit": null,
+      "parse": "text"
+    },
+    "oxygen_pct": {
+      "column": "Calibrated initial O2 % by vol",
+      "unit": "%",
+      "parse": "float"
+    }
+  }
+}
