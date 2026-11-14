@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-space-950 text-space-100 antialiased;
+  }
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-diffuse-400;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+/* ---------- Reusable building blocks ---------- */
+@layer components {
+  .panel {
+    @apply rounded-lg border border-space-700 bg-space-800;
+  }
+  .input {
+    @apply w-full rounded-md border border-space-600 bg-space-900 px-3 py-2 text-sm text-space-100 placeholder:text-space-400;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-flame-500 text-space-950 hover:bg-flame-400;
+  }
+  .btn-secondary {
+    @apply btn border border-space-600 bg-space-800 text-space-100 hover:bg-space-700;
+  }
+  .btn-ghost {
+    @apply btn text-space-300 hover:bg-space-800 hover:text-space-100;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-space-600 bg-space-900 px-2.5 py-0.5 text-xs text-space-300;
+  }
+  .page {
+    @apply mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8;
+  }
+}
