@@ -102,18 +102,7 @@ def test_coverage_matrix_is_topic_by_fuel_class():
     assert all(cell["count"] == len(cell["investigation_ids"]) for cell in body["cells"])
 
 
-def test_ai_search_returns_only_the_filters_it_set():
-    body = post_ok("/ai/search", {"question": "flame spread"})
-    schemas.AiSearchIntent.model_validate(body)
-    assert body["interpreted_as"] == {"q": "flame spread"}
-
-
-def test_ai_ask_cites_only_the_given_records():
-    body = post_ok("/ai/ask", {"question": "Compare these", "investigation_ids": ["psi-flex", "nope"]})
-    schemas.AiAnswer.model_validate(body)
-    assert [citation["investigation_id"] for citation in body["citations"]] == ["psi-flex"]
-    without_ids = post_ok("/ai/ask", {"question": "What is known about oxygen?"})
-    assert without_ids["citations"] == []
+# The checks of the two AI routes moved to tests/test_ai_routes.py (task T7).
 
 
 # ---------- The new routes ----------
