@@ -1,0 +1,42 @@
+[
+  {
+    "id": "iss-cabin",
+    "name": "ISS cabin atmosphere",
+    "o2_min": 19.0,
+    "o2_max": 23.0,
+    "pressure_min_kpa": 100.0,
+    "pressure_max_kpa": 102.7,
+    "gravity": "microgravity",
+    "source": "Nominal 14.7 psia (101.3 kPa), 21% O2: NASA NTRS 20070021378 (Lange et al., historical spacecraft atmospheres). Range = nominal +/-0.2 psia and +/-2% O2, tolerance from the same document's Constellation table (project assumption). https://ntrs.nasa.gov/api/citations/20070021378/downloads/20070021378.pdf"
+  },
+  {
+    "id": "exploration-atmosphere",
+    "name": "NASA exploration atmosphere (8.2 psia, 34% O2)",
+    "o2_min": 32.0,
+    "o2_max": 36.0,
+    "pressure_min_kpa": 55.2,
+    "pressure_max_kpa": 57.9,
+    "gravity": null,
+    "source": "Nominal 8.2 psia (56.5 kPa), 34% O2: NASA NTRS 20140000417. Range = nominal +/-0.2 psia and +/-2% O2, tolerance borrowed from NTRS 20070021378 (project assumption). https://ntrs.nasa.gov/api/citations/20140000417/downloads/20140000417.pdf"
+  },
+  {
+    "id": "staged-cabin",
+    "name": "Reduced-pressure staged cabin (10.2 psia, 26.5% O2)",
+    "o2_min": 24.5,
+    "o2_max": 28.5,
+    "pressure_min_kpa": 68.9,
+    "pressure_max_kpa": 71.7,
+    "gravity": null,
+    "source": "Nominal 10.2 psia (70.3 kPa), 26.5% O2: NASA NTRS 20070021378 and NTRS 20200002346. Range = nominal +/-0.2 psia and +/-2% O2, tolerance from NTRS 20070021378 (project assumption). https://ntrs.nasa.gov/api/citations/20070021378/downloads/20070021378.pdf"
+  },
+  {
+    "id": "eva-suit",
+    "name": "Spacesuit (4.3 psia, pure O2)",
+    "o2_min": 98.0,
+    "o2_max": 100.0,
+    "pressure_min_kpa": 27.6,
+    "pressure_max_kpa": 31.7,
+    "gravity": null,
+    "source": "4.3 psia (29.6 kPa), 100% O2, capability range 4.0-4.6 psia: NASA NTRS 20070021378 (Constellation summary). O2 range = 100% -2% (project assumption). https://ntrs.nasa.gov/api/citations/20070021378/downloads/20070021378.pdf"
+  }
+]
