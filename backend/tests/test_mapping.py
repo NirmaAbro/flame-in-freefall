@@ -205,15 +205,15 @@ class FakeModel:
         self.answers = list(answers)
         self.calls = []
 
-    def __call__(self, prompt, system="", timeout=30.0):
-        self.calls.append({"prompt": prompt, "system": system})
+    def __call__(self, system, user, timeout=None):
+        self.calls.append({"prompt": user, "system": system})
         answer = self.answers.pop(0)
         if isinstance(answer, Exception):
             raise answer
         return answer
 
 
-def never_called(prompt, system="", timeout=30.0):
+def never_called(system, user, timeout=None):
     raise AssertionError("the model must not be called here")
 
 
@@ -418,10 +418,11 @@ def test_11_an_invalid_answer_gets_one_retry_then_nothing_is_written(data_dir, b
 
 
 def test_12_without_a_working_model_nothing_is_written(data_dir, bass, capsys):
-    model = FakeModel(llm.LLMUnavailable("LLM_API_KEY is not set."))
+    model = FakeModel(None)  # app.llm.complete gives None for a missing key and for a failed request
     with pytest.raises(m.propose.ProposeFailed) as failure:
         propose_bass(data_dir, bass, model)
     assert "model" in str(failure.value).lower()
+    assert len(model.calls) == 1  # no second call: app.llm.complete already tried again
     assert not mapping_file(data_dir).exists()
     assert proposal_copies(data_dir) == []
 
@@ -529,7 +530,7 @@ def test_35_a_failed_forced_run_leaves_the_old_file_byte_for_byte(data_dir, bass
     before = path.read_bytes()
 
     with pytest.raises(m.propose.ProposeFailed):
-        propose_bass(data_dir, bass, FakeModel(llm.LLMUnavailable("timeout")), force=True)
+        propose_bass(data_dir, bass, FakeModel(None), force=True)
     assert path.read_bytes() == before
 
     with pytest.raises(m.propose.ProposeFailed):
@@ -855,21 +856,21 @@ def test_24_the_real_model_gives_a_file_that_passes_the_check(data_dir):
 
 def test_26_llm_complete_keeps_its_inputs():
     parameters = inspect.signature(llm.complete).parameters
-    assert list(parameters) == ["prompt", "system", "timeout"]
-    assert parameters["system"].default == ""
-    with pytest.raises(llm.LLMUnavailable):
-        llm.complete("hello")
+    assert list(parameters) == ["system", "user", "timeout"]  # T6 and T7 pass the three inputs by these names
+    assert parameters["timeout"].default is None
+    assert llm.complete(system="the rules", user="hello") is None  # no key: no answer and no error
 
 
 def test_42_llm_complete_sends_the_agreed_request(monkeypatch):
     monkeypatch.setenv("LLM_API_KEY", "sk-test-key")
     monkeypatch.setenv("LLM_MODEL", "test-model")
     monkeypatch.setenv("LLM_BASE_URL", "https://llm.example.test/")
+    monkeypatch.setenv("LLM_MAX_TOKENS", "256")
+    monkeypatch.delenv("LLM_REASONING_EFFORT", raising=False)
     seen = {}
 
     class Response:
-        def raise_for_status(self):
-            return None
+        status_code = 200
 
         def json(self):
             return {"choices": [{"message": {"content": "the answer"}}]}
@@ -879,12 +880,13 @@ def test_42_llm_complete_sends_the_agreed_request(monkeypatch):
         return Response()
 
     monkeypatch.setattr(httpx, "post", fake_post)
-    assert llm.complete("the question", system="the rules", timeout=5.0) == "the answer"
+    assert llm.complete(system="the rules", user="the question", timeout=5.0) == "the answer"
     assert seen["url"] == "https://llm.example.test/chat/completions"
     assert seen["headers"] == {"Authorization": "Bearer sk-test-key"}
     assert seen["json"] == {
         "model": "test-model",
         "messages": [{"role": "system", "content": "the rules"}, {"role": "user", "content": "the question"}],
+        "max_tokens": 256,
     }
     assert seen["timeout"] == 5.0
 
