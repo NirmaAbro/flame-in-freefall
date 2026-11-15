@@ -1,4 +1,6 @@
 """The one place that calls the model. Tasks T6 and T7 use this function."""
+from __future__ import annotations  # Python 3.9 cannot read "float | None" without this line
+
 import logging
 import os
 import time
