@@ -153,8 +153,11 @@ def propose(source_id, table_path, data_dir, *, complete=None, model_name=None, 
     mapping, check, problem = None, None, ""
     for attempt in range(2):
         ask = question if attempt == 0 else f"{question}\n\n{RETRY_NOTE}: {problem}\nReturn the full JSON again."
-        text = complete(system=system, user=ask)
-        if text is None:  # app.llm.complete gives None for a missing key and for a failed request
+        try:
+            text = complete(prompt=ask, system=system)
+        except llm.LLMUnavailable as error:  # app.llm.complete raises this for a missing key
+            raise ProposeFailed(f"The model did not answer, so nothing was written. Reason: {error}") from error
+        if text is None:  # and it gives None for a failed request
             raise ProposeFailed(NO_REPLY)
         try:
             candidate = build_mapping(extract_json(text), table, source_id, model_name)
