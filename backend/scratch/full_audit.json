@@ -1,0 +1,492 @@
+[
+  {
+    "route": "GET /health",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "Missing X-Data-Source in real mode; Missing X-Data-Source in fixture mode"
+  },
+  {
+    "route": "GET /dashboard/summary",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /filters",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "Missing X-Data-Source in real mode; Missing X-Data-Source in fixture mode"
+  },
+  {
+    "route": "GET /investigations",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /investigations?q=bass",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /investigations?hardware_family=MSG",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /investigations?page=1&page_size=10",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /investigations?page_size=101",
+    "real_status": 422,
+    "fixture_status": 422,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "422 expected/returned",
+    "fixture_validates": "422 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /investigations/PSI-25",
+    "real_status": 200,
+    "fixture_status": 404,
+    "real_source": "supabase",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "404 expected/returned",
+    "problem": "404 in fixture mode on alias"
+  },
+  {
+    "route": "GET /investigations/psi-25",
+    "real_status": 200,
+    "fixture_status": 404,
+    "real_source": "supabase",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "404 expected/returned",
+    "problem": "404 in fixture mode on alias"
+  },
+  {
+    "route": "GET /investigations/BASS-II",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /investigations/psi-bass-ii",
+    "real_status": 404,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "valid",
+    "problem": "404 on BASS-II/PSI-25 alias"
+  },
+  {
+    "route": "GET /investigations/unknown-id-404",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /investigations/PSI-25/variables",
+    "real_status": 200,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "404 expected/returned",
+    "problem": "Missing X-Data-Source in real mode; 404 in fixture mode on alias"
+  },
+  {
+    "route": "GET /investigations/psi-25/variables",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "404 on BASS-II/PSI-25 alias; 404 in fixture mode on alias"
+  },
+  {
+    "route": "GET /investigations/BASS-II/variables",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "404 on BASS-II/PSI-25 alias; 404 in fixture mode on alias"
+  },
+  {
+    "route": "GET /investigations/psi-bass-ii/variables",
+    "real_status": 404,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "valid",
+    "problem": "Missing X-Data-Source in fixture mode; 404 on BASS-II/PSI-25 alias"
+  },
+  {
+    "route": "GET /investigations/unknown-id-404/variables",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?investigation_id=PSI-25",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?investigation_id=psi-25",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?investigation_id=BASS-II",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?investigation_id=psi-bass-ii",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?fuel=PMMA",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?outcome=extinction",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?min_oxygen=20.0&max_oxygen=25.0",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?min_pressure_kpa=90.0&max_pressure_kpa=110.0",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests?page_size=201",
+    "real_status": 422,
+    "fixture_status": 422,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "422 expected/returned",
+    "fixture_validates": "422 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /tests/PSI-25%3APSI-25_Experimental%20table_BASS-II.csv%3A1",
+    "real_status": 200,
+    "fixture_status": 404,
+    "real_source": "supabase",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "404 expected/returned",
+    "problem": "404 in fixture mode on alias"
+  },
+  {
+    "route": "GET /tests/psi-bass-ii-b1",
+    "real_status": 404,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "valid",
+    "problem": "404 on BASS-II/PSI-25 alias"
+  },
+  {
+    "route": "GET /tests/unknown-test-404",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /habitats",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /export/tests.csv",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid (csv)",
+    "fixture_validates": "valid (csv)",
+    "problem": "None"
+  },
+  {
+    "route": "GET /export/tests.csv?investigation_id=PSI-25",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "supabase",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "valid (csv)",
+    "fixture_validates": "valid (csv)",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank?habitat=iss",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank?habitat=gateway",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank?habitat=lunar-surface",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank?habitat=mars-transit",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank?habitat=moon-base",
+    "real_status": 404,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank?habitat=spacesuit",
+    "real_status": 404,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "fixtures (sample)",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "valid",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank?habitat=unknown-habitat",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /rank",
+    "real_status": 422,
+    "fixture_status": 422,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "422 expected/returned",
+    "fixture_validates": "422 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "POST /compare",
+    "real_status": 422,
+    "fixture_status": 422,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "422 expected/returned",
+    "fixture_validates": "422 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "POST /compare",
+    "real_status": 422,
+    "fixture_status": 422,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "422 expected/returned",
+    "fixture_validates": "422 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "POST /compare",
+    "real_status": 422,
+    "fixture_status": 422,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "422 expected/returned",
+    "fixture_validates": "422 expected/returned",
+    "problem": "None"
+  },
+  {
+    "route": "GET /analytics/coverage",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "Missing X-Data-Source in real mode; Missing X-Data-Source in fixture mode"
+  },
+  {
+    "route": "POST /ai/search",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "Missing X-Data-Source in real mode; Missing X-Data-Source in fixture mode"
+  },
+  {
+    "route": "POST /ai/ask",
+    "real_status": 200,
+    "fixture_status": 200,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "valid",
+    "fixture_validates": "valid",
+    "problem": "Missing X-Data-Source in real mode; Missing X-Data-Source in fixture mode"
+  },
+  {
+    "route": "GET /explain",
+    "real_status": 404,
+    "fixture_status": 404,
+    "real_source": "none",
+    "fixture_source": "none",
+    "real_validates": "404 expected/returned",
+    "fixture_validates": "404 expected/returned",
+    "problem": "Not registered (README says it's POST /ai/ask)"
+  }
+]
