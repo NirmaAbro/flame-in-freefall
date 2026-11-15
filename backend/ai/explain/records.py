@@ -1,16 +1,18 @@
 """The records that the AI routes may use.
 
 They must be the same records as the record routes serve (GET /investigations),
-or a source can lead to a page that does not exist. Today those routes serve the
-sample records. When they move to the database, load_records() moves with them.
+or a source can lead to a page that does not exist. Those routes read through
+app/data_access.py: the database when its two keys are set, the sample data when
+they are not. load_records() reads through the same file.
 """
 import re
 from typing import Any, Dict, List
 
-from app import fixtures
+from app import data_access, fixtures
 
 Record = Dict[str, Any]
 
+PAGE = 1000  # the database gives at most 1,000 rows for one request
 MAX_RECORDS = 4  # the Compare page also sends at most 4
 PSI_HOME = "https://psi.nasa.gov/physci/repo"  # the link for a record that has none
 STOP_WORDS = frozenset(
@@ -21,7 +23,15 @@ ACRONYM_POINTS = 5
 
 
 def load_records() -> List[Record]:
-    return fixtures.investigations()
+    """Every record that the record routes know. A database error comes out as it is; the callers handle it."""
+    found: List[Record] = []
+    page = 1
+    while True:
+        rows, total, _source = data_access.list_investigations(page=page, page_size=PAGE)
+        found.extend(rows)
+        if not rows or len(found) >= total:
+            return found
+        page += 1
 
 
 def _text(record: Record) -> str:

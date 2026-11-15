@@ -833,8 +833,12 @@ def test_23_a_mapping_written_by_hand_needs_no_model(data_dir, flex, capsys):
     assert (final.status, final.proposed_by) == ("approved", "hand")
 
 
+# A key in the environment is not enough: app/data_access.py loads backend/.env when the app is imported.
 @pytest.mark.live
-@pytest.mark.skipif(not os.getenv("LLM_API_KEY"), reason="needs LLM_API_KEY: this test calls the real model")
+@pytest.mark.skipif(
+    os.getenv("IGNIS_LIVE_TESTS") != "1" or not os.getenv("LLM_API_KEY"),
+    reason="live test: set IGNIS_LIVE_TESTS=1 and LLM_API_KEY to call the real model",
+)
 def test_24_the_real_model_gives_a_file_that_passes_the_check(data_dir):
     """A smoke test. It does not prove that the mapping is right; the score does that."""
     tables = sorted((REPO_DATA / "raw").glob("PSI-*_*.csv"))
