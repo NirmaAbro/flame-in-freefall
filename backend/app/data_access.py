@@ -90,6 +90,107 @@ def _sanitize_q(q: Optional[str]) -> Optional[str]:
     return cleaned or None
 
 
+def _sanitize_lookup(value: str) -> str:
+    """Keep lookup values safe for Supabase's PostgREST filter expression."""
+    return re.sub(r"[,()]", " ", value).strip()
+
+
+_SUPABASE_ALIASES = {
+    "psi-bass-ii": "PSI-25",
+    "psi-bass": "PSI-26",
+    "psi-flex": "PSI-69",
+    "psi-flex-2": "PSI-68",
+}
+
+_FIXTURE_ALIASES = {
+    "psi-25": "psi-bass-ii",
+    "psi-26": "psi-bass",
+    "psi-69": "psi-flex",
+    "psi-68": "psi-flex-2",
+}
+
+
+def _fixture_investigation(inv_id: str) -> Optional[Dict[str, Any]]:
+    """Find a fixture record by canonical id, source id, acronym, or alias."""
+    wanted = inv_id.casefold()
+    target_fixture_id = _FIXTURE_ALIASES.get(wanted)
+    for rec in _fixtures.investigations():
+        rec_id = str(rec.get("id") or "").casefold()
+        if target_fixture_id and rec_id == target_fixture_id:
+            return rec
+        if wanted in {
+            rec_id,
+            str(rec.get("source_id") or "").casefold(),
+            str(rec.get("acronym") or "").casefold(),
+        }:
+            return rec
+    return None
+
+
+def _supabase_investigation_query(client, inv_id: str):
+    """Build a case-insensitive lookup across id, source_id, and acronym."""
+    lookup = _sanitize_lookup(inv_id)
+    alias = _SUPABASE_ALIASES.get(inv_id.casefold())
+    table = client.table("investigations").select(
+        "id, source_id, title, acronym, summary, research_area, project_type, "
+        "platform, environment, hardware, fuel_classes, fuel_materials, "
+        "topic_tags, measurement_types, conditions, files, publications, "
+        "source_url, doi, source_updated_at, ingested_at, data_status"
+    )
+    if alias:
+        return table.or_(
+            f"id.ilike.{lookup},source_id.ilike.{lookup},acronym.ilike.{lookup},"
+            f"id.ilike.{alias},source_id.ilike.{alias},acronym.ilike.{alias}"
+        )
+    return table.or_(
+        f"id.ilike.{lookup},source_id.ilike.{lookup},acronym.ilike.{lookup}"
+    )
+
+
+def _canonical_investigation_id(inv_id: str) -> Optional[str]:
+    """Resolve an investigation alias to the stored canonical id."""
+    if not has_credentials():
+        record = _fixture_investigation(inv_id)
+        return record.get("id") if record else None
+
+    direct_alias = _SUPABASE_ALIASES.get(inv_id.casefold())
+    if direct_alias:
+        return direct_alias
+
+    client = _get_client()
+    table = client.table("investigations")
+    query = table.select(
+        "id, source_id, title, acronym, summary, research_area, project_type, "
+        "platform, environment, hardware, fuel_classes, fuel_materials, "
+        "topic_tags, measurement_types, conditions, files, publications, "
+        "source_url, doi, source_updated_at, ingested_at, data_status"
+    )
+    if not hasattr(query, "or_"):
+        for field in ("id", "source_id", "acronym"):
+            try:
+                candidate = client.table("investigations").select(
+                    "id, source_id, acronym"
+                ).eq(field, inv_id).execute()
+            except Exception as exc:
+                _supabase_503(exc)
+            rows = candidate.data or []
+            for row in rows:
+                if inv_id.casefold() in {
+                    str(row.get("id") or "").casefold(),
+                    str(row.get("source_id") or "").casefold(),
+                    str(row.get("acronym") or "").casefold(),
+                }:
+                    return row.get("id") or inv_id
+        return inv_id
+
+    try:
+        response = _supabase_investigation_query(client, inv_id).execute()
+    except Exception as exc:
+        _supabase_503(exc)
+    rows = response.data or []
+    return rows[0].get("id") if rows else inv_id
+
+
 def _supabase_503(exc: Exception):
     """Raise HTTP 503 when a Supabase call fails."""
     from fastapi import HTTPException
@@ -195,33 +296,15 @@ def _filter_investigations_fixture(
 def get_investigation(inv_id: str) -> Tuple[Optional[Dict[str, Any]], str]:
     """Return (row_or_None, data_source)."""
     if not has_credentials():
-        for rec in _fixtures.investigations():
-            if rec["id"] == inv_id:
-                return rec, DATA_SOURCE_FIXTURE
-        return None, DATA_SOURCE_FIXTURE
+        return _fixture_investigation(inv_id), DATA_SOURCE_FIXTURE
 
     try:
-        client = _get_client()
-        resp = (
-            client.table("investigations")
-            .select(
-                "id, source_id, title, acronym, summary, research_area, project_type, "
-                "platform, environment, hardware, fuel_classes, fuel_materials, "
-                "topic_tags, measurement_types, conditions, files, publications, "
-                "source_url, doi, source_updated_at, ingested_at, data_status"
-            )
-            .eq("id", inv_id)
-            .single()
-            .execute()
-        )
+        resp = _supabase_investigation_query(_get_client(), inv_id).execute()
     except Exception as exc:
-        # single() raises if zero rows found; check for that case
-        msg = str(exc).lower()
-        if "0 rows" in msg or "no rows" in msg or "jsondecodeerror" in msg or "pgrst116" in msg:
-            return None, DATA_SOURCE_SUPABASE
         _supabase_503(exc)
 
-    return resp.data, DATA_SOURCE_SUPABASE
+    rows = resp.data or []
+    return (rows[0] if rows else None), DATA_SOURCE_SUPABASE
 
 
 # ---------------------------------------------------------------------------
@@ -241,8 +324,11 @@ def list_tests(
 ) -> Tuple[List[Dict[str, Any]], int, str]:
     """Return (rows, total, data_source)."""
     if not has_credentials():
+        canonical_id = _canonical_investigation_id(investigation_id) if investigation_id else None
+        if investigation_id and canonical_id is None:
+            return [], 0, DATA_SOURCE_FIXTURE
         rows = _filter_tests_fixture(
-            investigation_id, fuel, outcome,
+            canonical_id, fuel, outcome,
             min_oxygen, max_oxygen, min_pressure_kpa, max_pressure_kpa,
         )
         start = (page - 1) * page_size
@@ -257,7 +343,10 @@ def list_tests(
             .order("source_row")
         )
         if investigation_id:
-            query = query.eq("investigation_id", investigation_id)
+            canonical_id = _canonical_investigation_id(investigation_id)
+            if canonical_id is None:
+                return [], 0, DATA_SOURCE_SUPABASE
+            query = query.eq("investigation_id", canonical_id)
         if fuel:
             query = query.ilike("fuel", f"%{fuel}%")
         if outcome:
@@ -346,8 +435,12 @@ def iter_tests_csv(
 
     When credentials are present the table is paged in chunks of 1000.
     """
+    canonical_id = _canonical_investigation_id(investigation_id) if investigation_id else None
+    if investigation_id and canonical_id is None:
+        return iter([]), (DATA_SOURCE_SUPABASE if has_credentials() else DATA_SOURCE_FIXTURE)
+
     if not has_credentials():
-        rows = _filter_tests_fixture(investigation_id, None, None, None, None, None, None)
+        rows = _filter_tests_fixture(canonical_id, None, None, None, None, None, None)
         return iter(rows), DATA_SOURCE_FIXTURE
 
     def _iter_supabase():
@@ -361,8 +454,8 @@ def iter_tests_csv(
                     .order("investigation_id")
                     .order("source_row")
                 )
-                if investigation_id:
-                    query = query.eq("investigation_id", investigation_id)
+                if canonical_id:
+                    query = query.eq("investigation_id", canonical_id)
                 resp = query.range(offset, offset + CSV_PAGE_SIZE - 1).execute()
                 batch = resp.data or []
             except Exception as exc:

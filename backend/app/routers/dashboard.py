@@ -53,7 +53,11 @@ def _supabase_summary() -> Tuple[Dict[str, Any], str]:
         page=1,
         page_size=1000,
     )
-    _, test_count, test_source = data_access.list_tests(page=1, page_size=1)
+    test_rows, test_source = data_access.iter_tests_csv()
+    tests_by_investigation_counts = Counter(
+        row.get("investigation_id") for row in test_rows
+    )
+    test_count = sum(tests_by_investigation_counts.values())
     habitats, habitat_source = data_access.list_habitats()
 
     sources = {source, test_source, habitat_source}
@@ -68,19 +72,13 @@ def _supabase_summary() -> Tuple[Dict[str, Any], str]:
         for record in records
         for topic in (record.get("topic_tags") or [])
     )
-    tests_by_investigation: List[Dict[str, Any]] = []
-    for record in records:
-        _, count, investigation_source = data_access.list_tests(
-            investigation_id=record["id"],
-            page=1,
-            page_size=1,
-        )
-        if investigation_source != data_access.DATA_SOURCE_SUPABASE:
-            raise HTTPException(
-                status_code=503,
-                detail="Database query returned inconsistent data sources.",
-            )
-        tests_by_investigation.append({"label": record["id"], "count": count})
+    tests_by_investigation: List[Dict[str, Any]] = [
+        {
+            "label": record["id"],
+            "count": tests_by_investigation_counts.get(record["id"], 0),
+        }
+        for record in records
+    ]
 
     ingestion_dates = [
         record.get("ingested_at")

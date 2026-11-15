@@ -22,6 +22,10 @@ FIRST_FOUR = "Only the first 4 selected records were used."
 TOO_FEW = "A comparison needs at least 2 records."
 
 
+def data_source() -> str:
+    return data.source()
+
+
 def build(ids: List[str]) -> Record:
     wanted = list(dict.fromkeys(ids))  # each id once, at its first place
     by_id = {record["id"]: record for record in data.records()}

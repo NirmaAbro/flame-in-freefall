@@ -73,10 +73,12 @@ def spans(rows: List[Record]) -> Dict[str, Tuple[float, float]]:
 
 def build(record_id: str) -> Optional[Record]:
     """The answer for one record. None when the record is not known."""
-    if not any(record.get("id") == record_id for record in data.records()):
+    record = data.resolve_record(record_id, data.records())
+    if record is None:
         return None
-    rows = [row for row in data.tests() if row.get("investigation_id") == record_id]
+    canonical_id = record["id"]
+    rows = [row for row in data.tests() if row.get("investigation_id") == canonical_id]
     if not rows:
-        return {"investigation_id": record_id, "test_count": 0, "variables": [], "notes": [NO_ROWS]}
+        return {"investigation_id": canonical_id, "test_count": 0, "variables": [], "notes": [NO_ROWS]}
     entries, notes = summarise(rows)
-    return {"investigation_id": record_id, "test_count": len(rows), "variables": entries, "notes": notes + data.unchecked_notes(rows)}
+    return {"investigation_id": canonical_id, "test_count": len(rows), "variables": entries, "notes": notes + data.unchecked_notes(rows)}

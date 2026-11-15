@@ -22,6 +22,8 @@ uvicorn app.main:app --reload --port 8000
 
 - The list of routes is at http://localhost:8000/docs.
 - The checks run with `python -m pytest`.
+- With the server running, smoke-test every documented route with
+  `python -m scripts.smoke --base-url http://localhost:8000`.
 - Keys and addresses go in `backend/.env` (copy `backend/.env.example`). Start with `uvicorn app.main:app --env-file .env` to load them.
 - To point the frontend at this backend, put `NEXT_PUBLIC_USE_MOCK=false` in `frontend/ignis-frontend/.env.local` and restart the frontend.
 

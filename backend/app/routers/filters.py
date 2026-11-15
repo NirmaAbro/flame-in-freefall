@@ -1,14 +1,15 @@
 """Task T3. Stub: the filter values of the Explore page, from sample data."""
-from fastapi import APIRouter
+from fastapi import APIRouter, Response
 
-from .. import fixtures
+from .. import data_access, fixtures
 from ..schemas import FilterOptions
 
 router = APIRouter(tags=["records"])
 
 
 @router.get("/filters", response_model=FilterOptions)
-def get_filters():
+def get_filters(response: Response):
+    response.headers["X-Data-Source"] = data_access.DATA_SOURCE_FIXTURE
     records = fixtures.investigations()
     return {
         "topics": fixtures.meta()["topics"],

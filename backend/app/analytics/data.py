@@ -19,6 +19,12 @@ PAGE = 1000  # the database gives at most 1,000 rows for one request
 
 SAMPLE = "This answer uses sample data, not verified PSI data."
 PARSED = "This answer uses data that a program read from PSI tables. No person checked it."
+INVESTIGATION_ALIASES = {
+    "psi-25": "psi-bass-ii",
+    "psi-26": "psi-bass",
+    "psi-68": "psi-flex-2",
+    "psi-69": "psi-flex",
+}
 
 
 def records() -> List[Record]:
@@ -45,6 +51,32 @@ def topics() -> List[str]:
 
 def fuel_classes() -> List[str]:
     return fixtures.meta()["fuel_classes"]
+
+
+def source() -> str:
+    """Return the source selected by the shared record routes."""
+    return (
+        data_access.DATA_SOURCE_SUPABASE
+        if data_access.has_credentials()
+        else data_access.DATA_SOURCE_FIXTURE
+    )
+
+
+def resolve_record(record_id: str, records: List[Record]) -> Record | None:
+    """Find a record by canonical id, source id, acronym, or known fixture alias."""
+    wanted = record_id.casefold()
+    fixture_id = INVESTIGATION_ALIASES.get(wanted)
+    return next(
+        (
+            record
+            for record in records
+            if str(record.get("id") or "").casefold()
+            in {wanted, fixture_id}
+            or str(record.get("source_id") or "").casefold() == wanted
+            or str(record.get("acronym") or "").casefold() == wanted
+        ),
+        None,
+    )
 
 
 def unchecked_notes(used: Iterable[Record]) -> List[str]:

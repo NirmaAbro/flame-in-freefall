@@ -10,10 +10,11 @@ import logging
 from collections import defaultdict
 from typing import Any, Dict, List
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Response
 
 from .. import fixtures as _fixtures
-from ..db import DatabaseNotConfigured, get_supabase
+from .. import data_access
+from ..db import get_supabase
 from ..ranking.score import InvestigationScore, rank_investigations
 from ..schemas import RankResponse, RankedInvestigation, ScorePart
 
@@ -92,18 +93,17 @@ def _load_from_supabase():
 
 
 def _load_data():
-    """Try Supabase; fall back to fixtures on any failure or empty habitats table."""
-    try:
-        habs, invs, by_inv, source = _load_from_supabase()
-        # If the habitats table has not been seeded yet, fall back to fixtures
-        # so the route still works in development without a fully-loaded DB.
-        if not habs:
-            logger.warning("Supabase habitats table is empty; falling back to fixtures.")
-            return _load_from_fixtures()
-        return habs, invs, by_inv, source
-    except (DatabaseNotConfigured, Exception) as exc:
-        logger.warning("Supabase unavailable (%s); falling back to fixtures.", exc)
+    """Load one consistent data source without masking database failures."""
+    if not data_access.has_credentials():
         return _load_from_fixtures()
+
+    habs, invs, by_inv, source = _load_from_supabase()
+    if not habs:
+        raise HTTPException(
+            status_code=503,
+            detail="Database query returned no habitats.",
+        )
+    return habs, invs, by_inv, source
 
 
 # ---------------------------------------------------------------------------
@@ -112,9 +112,10 @@ def _load_data():
 
 
 @router.get("/rank", response_model=RankResponse)
-def rank(habitat: str):
+def rank(habitat: str, response: Response):
     """Rank investigations by test-condition match to the given habitat id."""
     habitats, investigations, tests_by_inv, data_source = _load_data()
+    response.headers["X-Data-Source"] = data_source
 
     found = next((h for h in habitats if h["id"] == habitat), None)
     if found is None:

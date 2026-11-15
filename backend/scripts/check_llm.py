@@ -41,7 +41,7 @@ def main() -> int:
         print("None")
         return 1
 
-    reply = complete("Say hello.", system="Reply with one word.")
+    reply = complete(system="Reply with one word.", user="Say hello.")
     if reply is None:
         print("reply: None")
         return 1

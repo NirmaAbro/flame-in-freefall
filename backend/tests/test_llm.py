@@ -1,5 +1,4 @@
 import httpx
-import pytest
 
 from app import llm
 
@@ -23,9 +22,9 @@ def test_url_building_with_and_without_trailing_slash(monkeypatch):
     monkeypatch.setenv("LLM_API_KEY", "secret")
     monkeypatch.setattr(llm.httpx, "post", fake_post)
     monkeypatch.setenv("LLM_BASE_URL", "https://example.test/api")
-    assert llm.complete("user", system="system") == "hello"
+    assert llm.complete("system", "user") == "hello"
     monkeypatch.setenv("LLM_BASE_URL", "https://example.test/api/")
-    assert llm.complete("user", system="system") == "hello"
+    assert llm.complete("system", "user") == "hello"
     assert calls == [
         "https://example.test/api/chat/completions",
         "https://example.test/api/chat/completions",
@@ -39,16 +38,15 @@ def test_empty_key_returns_none_without_request(monkeypatch):
         "post",
         lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError()),
     )
-    with pytest.raises(llm.LLMUnavailable):
-        llm.complete("user", system="system")
+    assert llm.complete("system", "user") is None
 
 
 def test_content_and_empty_content(monkeypatch):
     monkeypatch.setenv("LLM_API_KEY", "secret")
     responses = iter([_response(200, "hello"), _response(200, None)])
     monkeypatch.setattr(llm.httpx, "post", lambda *args, **kwargs: next(responses))
-    assert llm.complete("user", system="system") == "hello"
-    assert llm.complete("user", system="system") is None
+    assert llm.complete("system", "user") == "hello"
+    assert llm.complete("system", "user") is None
 
 
 def test_429_retries_once(monkeypatch):
@@ -61,7 +59,7 @@ def test_429_retries_once(monkeypatch):
         lambda *args, **kwargs: (calls.append(1) or next(responses)),
     )
     monkeypatch.setattr(llm.time, "sleep", lambda seconds: None)
-    assert llm.complete("user", system="system") == "hello"
+    assert llm.complete("system", "user") == "hello"
     assert len(calls) == 2
 
 
@@ -73,7 +71,7 @@ def test_401_does_not_retry(monkeypatch):
         "post",
         lambda *args, **kwargs: (calls.append(1) or _response(401, text="unauthorized")),
     )
-    assert llm.complete("user", system="system") is None
+    assert llm.complete("system", "user") is None
     assert len(calls) == 1
 
 
@@ -85,7 +83,7 @@ def test_timeout_returns_none(monkeypatch):
         lambda *args, **kwargs: (_ for _ in ()).throw(httpx.TimeoutException("timed out")),
     )
     monkeypatch.setattr(llm.time, "sleep", lambda seconds: None)
-    assert llm.complete("user", system="system") is None
+    assert llm.complete("system", "user") is None
 
 
 def test_key_never_appears_in_logs(monkeypatch, caplog):

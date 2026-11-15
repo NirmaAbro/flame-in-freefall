@@ -23,22 +23,22 @@ def _short_error(response: httpx.Response) -> str:
     return body[:200] or response.reason_phrase or "request failed"
 
 
-def complete(prompt: str, system: str = "", timeout: float = 30.0) -> str | None:
+def complete(system: str, user: str, timeout: float | None = None) -> str | None:
     """Send one prompt to an OpenAI-compatible chat API and return the text."""
     settings = get_settings()
     if not settings.llm_api_key:
-        raise LLMUnavailable("LLM_API_KEY is not set.")
+        return None
 
     payload = {
         "model": settings.llm_model,
         "messages": [
             {"role": "system", "content": system},
-            {"role": "user", "content": prompt},
+            {"role": "user", "content": user},
         ],
     }
     if os.getenv("LLM_MAX_TOKENS") is not None:
         payload["max_tokens"] = settings.llm_max_tokens
-    request_timeout = settings.llm_timeout if timeout == 30.0 else timeout
+    request_timeout = settings.llm_timeout if timeout is None else timeout
     url = f"{settings.llm_base_url.rstrip('/')}/chat/completions"
     headers = {"Authorization": f"Bearer {settings.llm_api_key}"}
 
