@@ -222,7 +222,9 @@ def test_database_without_settings_raises(monkeypatch):
         db.get_supabase()
 
 
-def test_model_without_key_raises(monkeypatch):
+def test_model_without_key_gives_no_answer(monkeypatch):
+    # Through ai/model_call.py, as T6 and T7 call it: the form of llm.complete changed three times in one day.
+    from ai.model_call import call_model
+
     monkeypatch.delenv("LLM_API_KEY", raising=False)
-    with pytest.raises(llm.LLMUnavailable):
-        llm.complete("hello")
+    assert call_model(llm.complete, "the rules", "hello") is None

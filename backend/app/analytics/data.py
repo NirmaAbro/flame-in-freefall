@@ -10,6 +10,8 @@ The two fixed lists (topics and fuel classes) come from the sample data, as in t
 The other T5 files call these functions through the module, as data.records(). They do not import
 a function by its name, and they do not change the lists that come back: the lists can be shared.
 """
+from __future__ import annotations  # Python 3.9 cannot read "Record | None" without this line
+
 from typing import Any, Dict, Iterable, List
 
 from .. import data_access, fixtures

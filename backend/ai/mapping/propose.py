@@ -11,6 +11,7 @@ from typing import Tuple
 
 from pydantic import ValidationError
 
+from ai.model_call import call_model
 from app import llm
 from app.config import get_settings
 from app.schemas import MAPPING_UNITS, MappingFile
@@ -153,11 +154,8 @@ def propose(source_id, table_path, data_dir, *, complete=None, model_name=None, 
     mapping, check, problem = None, None, ""
     for attempt in range(2):
         ask = question if attempt == 0 else f"{question}\n\n{RETRY_NOTE}: {problem}\nReturn the full JSON again."
-        try:
-            text = complete(prompt=ask, system=system)
-        except llm.LLMUnavailable as error:  # app.llm.complete raises this for a missing key
-            raise ProposeFailed(f"The model did not answer, so nothing was written. Reason: {error}") from error
-        if text is None:  # and it gives None for a failed request
+        text = call_model(complete, system, ask)  # works with each form of app.llm.complete
+        if text is None:  # a missing key or a failed request
             raise ProposeFailed(NO_REPLY)
         try:
             candidate = build_mapping(extract_json(text), table, source_id, model_name)

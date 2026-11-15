@@ -38,8 +38,14 @@ KEYWORDS_USED = "Your question was used as a keyword search."
 NO_QUESTION = "No question was given."
 PSI_HOME = "https://psi.nasa.gov/physci/repo"
 FIELDS = ("id", "acronym", "title", "summary", "platform", "hardware", "fuel_classes", "fuel_materials", "topic_tags", "measurement_types")
-# app.llm.complete raises LLMUnavailable for a missing key, and it gives None for a failed request.
-FAILURES = [llm.LLMUnavailable("off"), None, TypeError("bad reply"), RuntimeError("boom"), 7, ""]
+
+
+class LLMUnavailable(RuntimeError):
+    """A stand-in with the name of the error that one form of app.llm.complete raises for a missing key."""
+
+
+# One form of app.llm.complete raises LLMUnavailable for a missing key. Both forms give None for a failed request.
+FAILURES = [LLMUnavailable("off"), None, TypeError("bad reply"), RuntimeError("boom"), 7, ""]
 FAILURE_IDS = ["LLMUnavailable", "None", "TypeError", "RuntimeError", "number", "empty text"]
 
 SAMPLE = {record["id"]: record for record in fixtures.investigations()}
@@ -100,6 +106,13 @@ class FakeModel:
         if isinstance(answer, Exception):
             raise answer
         return answer
+
+
+class FakeModelOtherForm(FakeModel):
+    """The same stand-in in the other form of the function: complete(system, user, timeout)."""
+
+    def __call__(self, system, user, timeout=None):
+        return super().__call__(user, system=system, timeout=timeout)
 
 
 def use_model(monkeypatch, *answers):
@@ -206,6 +219,26 @@ def test_a1_prompt_holds_only_the_selected_records_and_the_question(monkeypatch)
     assert "[ID]" in first["system"]  # the example mark is not a real record id
     for record_id in SAMPLE:
         assert record_id not in first["system"]
+
+
+def test_a10_the_model_function_can_have_the_other_form(monkeypatch):
+    # app.llm.complete changed its form three times in one day. Both routes must work with each form.
+    fake = FakeModelOtherForm(out("Fine [psi-flex]."), json.dumps({"topic": "Fire suppression"}), None, None)
+    monkeypatch.setattr(llm, "complete", fake)
+
+    body = ask("What did FLEX burn?", ["psi-flex"])
+    assert body["answer"] == "Fine [psi-flex]."
+    assert cited(body) == ["psi-flex"]
+    assert search(Q)["interpreted_as"] == {"topic": "Fire suppression"}
+
+    first, second = fake.calls
+    assert json.loads(first["prompt"])["question"] == "What did FLEX burn?"  # the question reaches the user input
+    assert "[ID]" in first["system"] and first["timeout"] == 20  # the rules reach the system input
+    assert json.loads(second["prompt"])["question"] == Q and second["timeout"] == 8
+
+    # No answer in this form is None, also for a missing key: the plain result and the keyword search.
+    assert ask("What did FLEX burn?", ["psi-flex"]) == plain_body(["psi-flex"])
+    assert search(Q) == {"interpreted_as": {"q": Q}, "explanation": KEYWORDS_USED}
 
 
 def test_a2_a_valid_answer_is_used_with_stored_citations(monkeypatch):
