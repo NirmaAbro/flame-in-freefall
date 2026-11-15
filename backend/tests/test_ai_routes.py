@@ -38,8 +38,8 @@ KEYWORDS_USED = "Your question was used as a keyword search."
 NO_QUESTION = "No question was given."
 PSI_HOME = "https://psi.nasa.gov/physci/repo"
 FIELDS = ("id", "acronym", "title", "summary", "platform", "hardware", "fuel_classes", "fuel_materials", "topic_tags", "measurement_types")
-FAILURES = [llm.LLMUnavailable("off"), TypeError("bad reply"), RuntimeError("boom"), None, 7, ""]
-FAILURE_IDS = ["LLMUnavailable", "TypeError", "RuntimeError", "None", "number", "empty text"]
+FAILURES = [None, TypeError("bad reply"), RuntimeError("boom"), 7, ""]  # app.llm.complete gives None when it has no answer
+FAILURE_IDS = ["None", "TypeError", "RuntimeError", "number", "empty text"]
 
 SAMPLE = {record["id"]: record for record in fixtures.investigations()}
 Q = "experiments about putting out a fire"
@@ -93,8 +93,8 @@ class FakeModel:
         self.answers = list(answers)
         self.calls = []
 
-    def __call__(self, prompt, system="", timeout=30.0):
-        self.calls.append({"prompt": prompt, "system": system, "timeout": timeout})
+    def __call__(self, system, user, timeout=None):
+        self.calls.append({"prompt": user, "system": system, "timeout": timeout})
         answer = self.answers.pop(0)
         if isinstance(answer, Exception):
             raise answer
@@ -333,7 +333,7 @@ def test_a7_record_ids(monkeypatch):
     assert prompt_ids(fake.calls[0]) == ["psi-bass", "psi-flex"]
 
     # An empty list means the same as no list: the keyword search runs, and the model is called.
-    fake = use_model(monkeypatch, llm.LLMUnavailable("off"), llm.LLMUnavailable("off"))
+    fake = use_model(monkeypatch, None, None)
     assert ask("Compare FLEX and BASS", []) == ask("Compare FLEX and BASS")
     assert len(fake.calls) == 2
 
@@ -517,7 +517,7 @@ def test_c5_records_with_missing_fields_get_the_fixed_texts(monkeypatch):
 
 
 def test_c6_a_request_does_not_change_the_stored_records(monkeypatch):
-    use_model(monkeypatch, out("Fine [psi-flex]."), llm.LLMUnavailable("off"), json.dumps({"topic": "Fire suppression"}))
+    use_model(monkeypatch, out("Fine [psi-flex]."), None, json.dumps({"topic": "Fire suppression"}))
     ask("How do these differ?", ["psi-flex", "psi-bass"])
     ask("Compare FLEX and BASS")
     search(Q)
@@ -840,7 +840,7 @@ def test_n2_a_selected_database_record_is_found(monkeypatch):
         database_record("PSI-69", "Flame Extinguishment Experiment (FLEX)", "FLEX"),
     ]
     shared_records(monkeypatch, stored)
-    use_model(monkeypatch, llm.LLMUnavailable("off"))
+    use_model(monkeypatch, None)
     assert ask("What did this study vary?", ["PSI-69", "psi-flex"]) == {
         "answer": "You selected 1 record. FLEX: no summary in the indexed record.",
         "citations": [{"investigation_id": "PSI-69", "title": "Flame Extinguishment Experiment (FLEX)", "source_url": PSI_HOME}],

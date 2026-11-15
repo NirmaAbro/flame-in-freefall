@@ -22,6 +22,10 @@ from .tables import Table, read_table
 SAMPLE_ROWS = 8
 COLUMN_KEYS = ("source_column", "target_field", "unit", "confidence", "note")
 RETRY_NOTE = "Your previous answer was not valid"
+NO_REPLY = (
+    "The model did not answer, so nothing was written. Check LLM_API_KEY, LLM_BASE_URL and LLM_MODEL. "
+    "When a request failed, a line above this one gives the reason."
+)
 
 FIELD_MEANINGS = {
     "test_label": "the name or number that identifies one run",
@@ -149,10 +153,9 @@ def propose(source_id, table_path, data_dir, *, complete=None, model_name=None, 
     mapping, check, problem = None, None, ""
     for attempt in range(2):
         ask = question if attempt == 0 else f"{question}\n\n{RETRY_NOTE}: {problem}\nReturn the full JSON again."
-        try:
-            text = complete(ask, system=system)
-        except llm.LLMUnavailable as error:
-            raise ProposeFailed(f"The model did not answer, so nothing was written. Reason: {error}") from error
+        text = complete(system=system, user=ask)
+        if text is None:  # app.llm.complete gives None for a missing key and for a failed request
+            raise ProposeFailed(NO_REPLY)
         try:
             candidate = build_mapping(extract_json(text), table, source_id, model_name)
         except ValueError as error:
