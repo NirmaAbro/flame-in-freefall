@@ -150,6 +150,11 @@ export default function OverviewPage() {
             title: "Open the research map",
             text: "See which topics are well covered and which are sparse.",
           },
+          {
+            href: "/habitat",
+            title: "Habitat ranking",
+            text: "Explore Habitats , pick one of 4 habitats.",
+          },
         ].map((card) => (
           <Link
             key={card.href}

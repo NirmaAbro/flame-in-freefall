@@ -21,4 +21,5 @@ export const NAV_ITEMS = [
   { href: "/compare", label: "Compare" },
   { href: "/research-map", label: "Research Map" },
   { href: "/copilot", label: "AI Copilot" },
+  { href: "/habitat", label: "Habitat ranking" },
 ] as const;
