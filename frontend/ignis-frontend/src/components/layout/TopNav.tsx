@@ -5,7 +5,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Flame, Menu, Search, Sparkles, X } from "lucide-react";
 import { NAV_ITEMS } from "@/lib/constants";
-import { USE_MOCK } from "@/lib/api";
 
 /** Persistent top navigation: logo, 5 destinations, global search, data-source badge, Copilot shortcut. */
 export function TopNav() {
@@ -58,12 +57,6 @@ export function TopNav() {
               className="input w-64 pl-8"
             />
           </form>
-
-          {USE_MOCK && (
-            <span className="chip hidden border-flame-500/50 text-flame-300 sm:inline-flex" title="Showing built-in dummy data">
-              Sample data
-            </span>
-          )}
 
           <Link href="/copilot" className="btn-primary hidden sm:inline-flex">
             <Sparkles className="h-4 w-4" aria-hidden />

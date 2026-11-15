@@ -4,20 +4,16 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { useCompare } from "@/context/CompareContext";
 import { MAX_COMPARE, MIN_COMPARE } from "@/lib/constants";
-import { MOCK_INVESTIGATIONS } from "@/lib/mock/data";
-import { USE_MOCK } from "@/lib/api";
 
 /**
  * Floating tray listing records selected for comparison.
- * Labels are looked up from mock data only to name the chips; with the real
- * backend it falls back to the id (see README for storing labels in context).
+ * The selected ids are shown until comparison metadata is loaded.
  */
 export function CompareTray() {
   const { ids, remove, clear, isFull } = useCompare();
   if (ids.length === 0) return null;
 
-  const label = (id: string) =>
-    (USE_MOCK && MOCK_INVESTIGATIONS.find((i) => i.id === id)?.acronym) || id;
+  const label = (id: string) => id;
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-space-600 bg-space-800/95 backdrop-blur">

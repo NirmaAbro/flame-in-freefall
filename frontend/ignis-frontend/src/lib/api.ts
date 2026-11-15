@@ -1,13 +1,4 @@
-/**
- * Single place where the front-end talks to data.
- *
- *  NEXT_PUBLIC_USE_MOCK=true  -> dummy data from src/lib/mock (default)
- *  NEXT_PUBLIC_USE_MOCK=false -> real IGNIS backend (FastAPI) at NEXT_PUBLIC_API_BASE_URL
- *
- * Endpoint paths follow the REST contract in the implementation plan (section 4).
- * The browser only ever calls the IGNIS backend, never NASA or Gemini directly.
- */
-import * as mock from "./mock/mockApi";
+import axios, { AxiosError, type InternalAxiosRequestConfig } from "axios";
 import type {
   AiAnswer,
   AiSearchIntent,
@@ -15,74 +6,126 @@ import type {
   CoverageResponse,
   DashboardSummary,
   FilterOptions,
+  Habitat,
+  Health,
   Investigation,
   InvestigationListItem,
   InvestigationQuery,
   Paginated,
+  RankResponse,
+  TestQuery,
+  TestRow,
+  VariablesResponse,
 } from "./types";
 
-export const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK !== "false";
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api/v1";
+const endpoints = {
+  health: "/health",
+  dashboard: "/dashboard/summary",
+  filters: "/filters",
+  investigations: "/investigations",
+  investigation: (id: string) => `/investigations/${encodeURIComponent(id)}`,
+  tests: "/tests",
+  test: (id: string) => `/tests/${encodeURIComponent(id)}`,
+  habitats: "/habitats",
+  exportTests: "/export/tests.csv",
+  rank: "/rank",
+  variables: (id: string) =>
+    `/investigations/${encodeURIComponent(id)}/variables`,
+  compare: "/compare",
+  coverage: "/analytics/coverage",
+  aiSearch: "/ai/search",
+  aiAsk: "/ai/ask",
+} as const;
 
-/** Thin fetch wrapper: JSON in/out, readable errors. */
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...init,
-    headers: { "Content-Type": "application/json", ...init?.headers },
-  });
-  if (!response.ok) {
-    throw new Error(`Request to ${path} failed (${response.status}). Check that the backend is running.`);
-  }
-  return response.json() as Promise<T>;
+const client = axios.create({
+  baseURL:
+    process.env.NEXT_PUBLIC_API_BASE_URL ??
+    "https://flame-in-freefall-nyxr.onrender.com/api/v1",
+  timeout: 15_000,
+  headers: { Accept: "application/json", "Content-Type": "application/json" },
+});
+
+client.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const token =
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("ignis_access_token")
+      : null;
+  if (token) config.headers.set("Authorization", `Bearer ${token}`);
+  return config;
+});
+
+client.interceptors.response.use(
+  undefined,
+  (error: AxiosError<{ detail?: string }>) => {
+    const message = error.response?.data?.detail || error.message;
+    return Promise.reject(
+      new Error(message || "Unable to reach the IGNIS API."),
+    );
+  },
+);
+
+function get<T>(path: string, params?: object): Promise<T> {
+  return client.get<T>(path, { params }).then(({ data }) => data);
 }
 
-/** Turns { a: 1, b: undefined } into "?a=1". Skips empty values. */
-function toQueryString(params: object): string {
-  const search = new URLSearchParams();
-  Object.entries(params).forEach(([key, value]) => {
-    if (value !== undefined && value !== null && value !== "") search.set(key, String(value));
-  });
-  const text = search.toString();
-  return text ? `?${text}` : "";
+function post<T>(path: string, body: unknown): Promise<T> {
+  return client.post<T>(path, body).then(({ data }) => data);
 }
 
-// GET /dashboard/summary
+export const getHealth = (): Promise<Health> => get(endpoints.health);
+
 export const getDashboardSummary = (): Promise<DashboardSummary> =>
-  USE_MOCK ? mock.getDashboardSummary() : request("/dashboard/summary");
+  get(endpoints.dashboard);
 
-// GET /topics  (+ other filter values). Adjust to the real contract when the backend exposes it.
 export const getFilterOptions = (): Promise<FilterOptions> =>
-  USE_MOCK ? mock.getFilterOptions() : request("/filters");
+  get(endpoints.filters);
 
-// GET /investigations
 export const listInvestigations = (
   query: InvestigationQuery,
 ): Promise<Paginated<InvestigationListItem>> =>
-  USE_MOCK ? mock.listInvestigations(query) : request(`/investigations${toQueryString(query)}`);
+  get(endpoints.investigations, query);
 
-// GET /investigations/{id}
 export const getInvestigation = (id: string): Promise<Investigation> =>
-  USE_MOCK ? mock.getInvestigation(id) : request(`/investigations/${encodeURIComponent(id)}`);
+  get(endpoints.investigation(id));
 
-// POST /compare
-export const compareInvestigations = (ids: string[]): Promise<CompareResponse> =>
-  USE_MOCK
-    ? mock.compareInvestigations(ids)
-    : request("/compare", { method: "POST", body: JSON.stringify({ investigation_ids: ids }) });
+export const listTests = (query: TestQuery = {}): Promise<Paginated<TestRow>> =>
+  get(endpoints.tests, query);
 
-// GET /analytics/coverage
+export const getTest = (id: string): Promise<TestRow> =>
+  get(endpoints.test(id));
+
+export const getHabitats = (): Promise<Habitat[]> => get(endpoints.habitats);
+
+export const exportTestsCsv = (
+  query: Pick<TestQuery, "investigation_id"> = {},
+): Promise<Blob> =>
+  client
+    .get<Blob>(endpoints.exportTests, { params: query, responseType: "blob" })
+    .then(({ data }) => data);
+
+export const rankInvestigations = (habitat: string): Promise<RankResponse> =>
+  get(endpoints.rank, { habitat });
+
+export const getInvestigationVariables = (
+  id: string,
+): Promise<VariablesResponse> => get(endpoints.variables(id));
+
+export const compareInvestigations = (
+  ids: string[],
+): Promise<CompareResponse> =>
+  post(endpoints.compare, { investigation_ids: ids });
+
 export const getCoverage = (): Promise<CoverageResponse> =>
-  USE_MOCK ? mock.getCoverage() : request("/analytics/coverage");
+  get(endpoints.coverage);
 
-// POST /ai/search
 export const aiSearch = (question: string): Promise<AiSearchIntent> =>
-  USE_MOCK ? mock.aiSearch(question) : request("/ai/search", { method: "POST", body: JSON.stringify({ question }) });
+  post(endpoints.aiSearch, { question });
 
-// POST /ai/ask
-export const askAi = (question: string, investigationIds?: string[]): Promise<AiAnswer> =>
-  USE_MOCK
-    ? mock.askAi(question, investigationIds)
-    : request("/ai/ask", {
-        method: "POST",
-        body: JSON.stringify({ question, investigation_ids: investigationIds }),
-      });
+export const askAi = (
+  question: string,
+  investigationIds?: string[],
+): Promise<AiAnswer> =>
+  post(endpoints.aiAsk, {
+    question,
+    investigation_ids: investigationIds,
+  });

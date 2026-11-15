@@ -1,6 +1,7 @@
 export const NOT_REPORTED = "Not reported in indexed record";
 
-export const CHALLENGE_URL = "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/";
+export const CHALLENGE_URL =
+  "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/";
 export const PSI_REPO_URL = "https://psi.nasa.gov/physci/repo";
 
 /** Max / min records in Compare, from the plan (2-4). */

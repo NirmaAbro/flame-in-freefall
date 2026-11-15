@@ -9,7 +9,11 @@
  * The UI renders `null` as "Not reported in indexed record".
  */
 
-export type FuelClass = "Solid" | "Gas" | "Liquid droplet" | "Particulate / aerosol";
+export type FuelClass =
+  | "Solid"
+  | "Gas"
+  | "Liquid droplet"
+  | "Particulate / aerosol";
 
 /** Where a displayed fact comes from. Shown next to the value it supports. */
 export interface SourceCitation {
@@ -70,7 +74,7 @@ export interface Investigation {
   doi: string | null;
   source_updated_at: string | null;
   ingested_at: string;
-  /** "sample" = dummy data from src/lib/mock. The real backend should send "verified". */
+  /** Indicates whether the source record is sample or verified data. */
   data_status: "sample" | "verified";
 }
 
@@ -95,6 +99,88 @@ export interface InvestigationQuery {
   sort?: "relevance" | "title";
   page?: number;
   page_size?: number;
+}
+
+export interface TestQuery {
+  investigation_id?: string;
+  fuel?: string;
+  outcome?: string;
+  min_oxygen?: number;
+  max_oxygen?: number;
+  min_pressure_kpa?: number;
+  max_pressure_kpa?: number;
+  page?: number;
+  page_size?: number;
+}
+
+export interface TestRow {
+  id: string;
+  investigation_id: string;
+  test_label: string | null;
+  fuel: string | null;
+  geometry: string | null;
+  oxygen_pct: number | null;
+  pressure_kpa: number | null;
+  flow_cm_s: number | null;
+  diluent: string | null;
+  outcome: string | null;
+  source_file: string | null;
+  source_row: number | null;
+  raw: Record<string, string | null>;
+  flags: string[];
+  data_status: "sample" | "verified" | "parsed";
+}
+
+export interface Habitat {
+  id: string;
+  name: string;
+  oxygen_pct_min: number | null;
+  oxygen_pct_max: number | null;
+  pressure_kpa_min: number | null;
+  pressure_kpa_max: number | null;
+  gravity: string | null;
+  citation: SourceCitation;
+  data_status: "sample" | "verified";
+}
+
+export interface ScorePart {
+  name: string;
+  value: number | null;
+  note: string | null;
+}
+
+export interface RankedInvestigation {
+  investigation_id: string;
+  title: string;
+  acronym: string | null;
+  score: number | null;
+  parts: ScorePart[];
+}
+
+export interface RankResponse {
+  habitat: Habitat;
+  items: RankedInvestigation[];
+  formula: string | null;
+  notes: string[];
+}
+
+export interface VariableSummary {
+  field: string;
+  status: "varied" | "constant" | "not_reported";
+  values: string[];
+  minimum: number | null;
+  maximum: number | null;
+}
+
+export interface VariablesResponse {
+  investigation_id: string;
+  test_count: number;
+  variables: VariableSummary[];
+  notes: string[];
+}
+
+export interface Health {
+  status: string;
 }
 
 export interface DashboardSummary {
@@ -134,7 +220,12 @@ export interface ComparableParameter {
 }
 
 export interface CompareResponse {
-  investigations: { id: string; title: string; acronym: string | null; source_url: string }[];
+  investigations: {
+    id: string;
+    title: string;
+    acronym: string | null;
+    source_url: string;
+  }[];
   rows: CompareRow[];
   comparable_parameters: ComparableParameter[];
   notes: string[];
