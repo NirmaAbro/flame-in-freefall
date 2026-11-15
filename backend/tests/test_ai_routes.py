@@ -38,8 +38,9 @@ KEYWORDS_USED = "Your question was used as a keyword search."
 NO_QUESTION = "No question was given."
 PSI_HOME = "https://psi.nasa.gov/physci/repo"
 FIELDS = ("id", "acronym", "title", "summary", "platform", "hardware", "fuel_classes", "fuel_materials", "topic_tags", "measurement_types")
-FAILURES = [None, TypeError("bad reply"), RuntimeError("boom"), 7, ""]  # app.llm.complete gives None when it has no answer
-FAILURE_IDS = ["None", "TypeError", "RuntimeError", "number", "empty text"]
+# app.llm.complete raises LLMUnavailable for a missing key, and it gives None for a failed request.
+FAILURES = [llm.LLMUnavailable("off"), None, TypeError("bad reply"), RuntimeError("boom"), 7, ""]
+FAILURE_IDS = ["LLMUnavailable", "None", "TypeError", "RuntimeError", "number", "empty text"]
 
 SAMPLE = {record["id"]: record for record in fixtures.investigations()}
 Q = "experiments about putting out a fire"
@@ -93,8 +94,8 @@ class FakeModel:
         self.answers = list(answers)
         self.calls = []
 
-    def __call__(self, system, user, timeout=None):
-        self.calls.append({"prompt": user, "system": system, "timeout": timeout})
+    def __call__(self, prompt, system="", timeout=30.0):
+        self.calls.append({"prompt": prompt, "system": system, "timeout": timeout})
         answer = self.answers.pop(0)
         if isinstance(answer, Exception):
             raise answer

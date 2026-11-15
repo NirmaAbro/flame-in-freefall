@@ -222,6 +222,7 @@ def test_database_without_settings_raises(monkeypatch):
         db.get_supabase()
 
 
-def test_model_without_key_gives_no_answer(monkeypatch):
+def test_model_without_key_raises(monkeypatch):
     monkeypatch.delenv("LLM_API_KEY", raising=False)
-    assert llm.complete("the rules", "hello") is None
+    with pytest.raises(llm.LLMUnavailable):
+        llm.complete("hello")
