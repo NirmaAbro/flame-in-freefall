@@ -2,13 +2,14 @@
 import json
 from typing import Any, Dict, Optional
 
+from ai.model_call import call_model
 from app import llm
 
 
 def ask_model(user_text: str, system: str, timeout: float) -> Optional[Dict[str, Any]]:
     """Return the JSON object in the model's reply, or None for every kind of failure."""
     try:
-        reply = llm.complete(prompt=user_text, system=system, timeout=timeout)
+        reply = call_model(llm.complete, system, user_text, timeout)  # works with each form of llm.complete
     except Exception:  # no failure of the model may break a route
         return None
     if not isinstance(reply, str):

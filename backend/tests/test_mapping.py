@@ -199,7 +199,7 @@ def read_json(path: Path):
 
 
 class FakeModel:
-    """Stands in for app.llm.complete. It returns the queued answers in order."""
+    """Stands in for app.llm.complete in the form complete(prompt, system, timeout). It returns the queued answers in order."""
 
     def __init__(self, *answers):
         self.answers = list(answers)
@@ -211,6 +211,22 @@ class FakeModel:
         if isinstance(answer, Exception):
             raise answer
         return answer
+
+
+class FakeModelOtherForm(FakeModel):
+    """The same stand-in in the other form of the function: complete(system, user, timeout)."""
+
+    def __call__(self, system, user, timeout=None):
+        return super().__call__(user, system=system)
+
+
+class LLMUnavailable(RuntimeError):
+    """A stand-in with the name of the error that one form of app.llm.complete raises for a missing key."""
+
+
+def call_model(*args, **kwargs):
+    """ai.model_call.call_model, imported on first use."""
+    return importlib.import_module("ai.model_call").call_model(*args, **kwargs)
 
 
 def never_called(prompt, system="", timeout=30.0):
@@ -418,8 +434,8 @@ def test_11_an_invalid_answer_gets_one_retry_then_nothing_is_written(data_dir, b
 
 
 def test_12_without_a_working_model_nothing_is_written(data_dir, bass, capsys):
-    # app.llm.complete raises LLMUnavailable for a missing key, and it gives None for a failed request.
-    for no_answer in (llm.LLMUnavailable("LLM_API_KEY is not set."), None):
+    # One form of app.llm.complete raises LLMUnavailable for a missing key. Both forms give None for a failed request.
+    for no_answer in (LLMUnavailable("LLM_API_KEY is not set."), None):
         model = FakeModel(no_answer)
         with pytest.raises(m.propose.ProposeFailed) as failure:
             propose_bass(data_dir, bass, model)
@@ -434,6 +450,24 @@ def test_12_without_a_working_model_nothing_is_written(data_dir, bass, capsys):
     assert not mapping_file(data_dir).exists()
     # The command function reads no .env file; only the real entry point does.
     assert os.getenv("SUPABASE_KEY") is None and os.getenv("LLM_API_KEY") is None
+
+
+def test_44_the_model_function_can_have_the_other_form(data_dir, bass):
+    retry_note = m.propose.RETRY_NOTE
+    model = FakeModelOtherForm("I cannot produce JSON today.", answer_for(BASS_HEADER, BASS_GOOD))
+    result = propose_bass(data_dir, bass, model)
+
+    assert result.check.errors == []
+    assert [call["system"] for call in model.calls] == [m.propose.system_prompt()] * 2  # the rules reach the system input
+    assert "first_rows" in model.calls[0]["prompt"]  # the table reaches the other input
+    assert retry_note not in model.calls[0]["prompt"] and retry_note in model.calls[1]["prompt"]
+
+    # No answer in this form is None, also for a missing key.
+    other = data_dir.parent / "data2"
+    table = write_table(other, BASS_FILE, BASS_HEADER, BASS_ROWS)
+    with pytest.raises(m.propose.ProposeFailed):
+        m.propose.propose("PSI-25", table, other, complete=FakeModelOtherForm(None), model_name="fake-model", now=now)
+    assert not mapping_file(other).exists()
 
 
 def test_13_the_prompt_holds_the_table_and_the_contract_and_no_setting(data_dir, monkeypatch):
@@ -856,23 +890,26 @@ def test_24_the_real_model_gives_a_file_that_passes_the_check(data_dir):
 # ---------- Existing code (tests 26, 42) ----------
 
 
-def test_26_llm_complete_keeps_its_inputs():
-    parameters = inspect.signature(llm.complete).parameters
-    assert list(parameters) == ["prompt", "system", "timeout"]  # T6 and T7 pass the three inputs by these names
-    assert parameters["system"].default == ""
-    with pytest.raises(llm.LLMUnavailable):  # no key: an error that T6 and T7 both handle
-        llm.complete("hello")
+# The form of app.llm.complete changed three times in one day. T6 and T7 call it through ai/model_call.py,
+# so these two tests check the real function through that file, in whatever form it has.
 
 
-def test_42_llm_complete_sends_the_agreed_request(monkeypatch):
+def test_26_the_real_function_can_be_called_without_a_key():
+    assert "system" in inspect.signature(llm.complete).parameters  # ai/model_call.py finds the form by this name
+    assert call_model(llm.complete, "the rules", "hello") is None  # no key: no answer, no error and no request
+
+
+def test_42_the_real_function_sends_each_text_in_its_role(monkeypatch):
     monkeypatch.setenv("LLM_API_KEY", "sk-test-key")
     monkeypatch.setenv("LLM_MODEL", "test-model")
     monkeypatch.setenv("LLM_BASE_URL", "https://llm.example.test/")
-    monkeypatch.delenv("LLM_MAX_TOKENS", raising=False)
     seen = {}
 
     class Response:
         status_code = 200
+
+        def raise_for_status(self):
+            return None
 
         def json(self):
             return {"choices": [{"message": {"content": "the answer"}}]}
@@ -882,13 +919,11 @@ def test_42_llm_complete_sends_the_agreed_request(monkeypatch):
         return Response()
 
     monkeypatch.setattr(httpx, "post", fake_post)
-    assert llm.complete(prompt="the question", system="the rules", timeout=5.0) == "the answer"
+    assert call_model(llm.complete, "the rules", "the question", 5.0) == "the answer"
     assert seen["url"] == "https://llm.example.test/chat/completions"
     assert seen["headers"] == {"Authorization": "Bearer sk-test-key"}
-    assert seen["json"] == {
-        "model": "test-model",
-        "messages": [{"role": "system", "content": "the rules"}, {"role": "user", "content": "the question"}],
-    }
+    assert seen["json"]["model"] == "test-model"
+    assert seen["json"]["messages"] == [{"role": "system", "content": "the rules"}, {"role": "user", "content": "the question"}]
     assert seen["timeout"] == 5.0
 
 

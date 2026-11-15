@@ -290,7 +290,7 @@ def use_data(monkeypatch, records=(), tests=(), topics=None, fuel_classes=None):
 
 T5_FILES = {"__init__.py", "data.py", "variables.py", "comparison.py", "coverage.py"}
 # Every module that a T5 file may import. A new entry here is a decision, not a detail.
-LOGIC_IMPORTS = {"typing", "collections", "decimal", ".data", ".variables"}
+LOGIC_IMPORTS = {"__future__", "typing", "collections", "decimal", ".data", ".variables"}
 ROUTE_IMPORTS = {"typing", "fastapi", "..analytics", "..schemas"}
 
 
