@@ -25,6 +25,21 @@ uvicorn app.main:app --reload --port 8000
 - Keys and addresses go in `backend/.env` (copy `backend/.env.example`). Start with `uvicorn app.main:app --env-file .env` to load them.
 - To point the frontend at this backend, put `NEXT_PUBLIC_USE_MOCK=false` in `frontend/ignis-frontend/.env.local` and restart the frontend.
 
+## LLM setup (Google AI Studio)
+
+Create an API key in [Google AI Studio](https://aistudio.google.com/apikey), then set
+these variables in `backend/.env`:
+
+```env
+LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+LLM_MODEL=gemini-3.8-flash
+LLM_API_KEY=your-key
+```
+
+From `backend`, run `python -m scripts.check_llm` to list available Flash/Pro
+models and test the configured model. Set the same variables in the Render
+hosting environment.
+
 ## At a glance
 
 ```mermaid
