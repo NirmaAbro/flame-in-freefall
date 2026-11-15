@@ -95,7 +95,7 @@ Routes, all under `/api/v1`:
 | Task | Route | Query params | Notes |
 | --- | --- | --- | --- |
 | T0 | `GET /health` | — | Health check |
-| T3 | `GET /dashboard/summary` | — | Overview, Research Map |
+| T3 | `GET /dashboard/summary` | — | Overview, Research Map; indexed investigation, test, habitat, file and publication counts |
 | T3 | `GET /filters` | — | Explore filter values |
 | T3 | `GET /investigations` | `q`, `hardware_family`, `page`, `page_size` (max 100, default 25) | Paginated; `q` matches title/acronym/summary/source\_id/hardware |
 | T3 | `GET /investigations/{id}` | — | 404 if not found; header `X-Data-Source` |

@@ -107,10 +107,13 @@ class TopicCount(BaseModel):
 
 class DashboardSummary(BaseModel):
     investigation_count: int
+    test_count: int
+    habitat_count: int
     file_count: int
     publication_count: int
-    last_ingestion_date: str
+    last_ingestion_date: Optional[str]
     counts_by_topic: List[TopicCount]
+    tests_by_investigation: List[TopicCount]
     featured_ids: List[str]
     dataset_note: str
 

@@ -32,20 +32,20 @@ def main() -> int:
         for model in models:
             model_id = model.get("id", "")
             if "flash" in model_id.lower() or "pro" in model_id.lower():
-                print(model_id)
                 printed += 1
                 if printed == 30:
                     break
+        print(f"model ids count: {printed}")
     except (httpx.HTTPError, ValueError, TypeError, AttributeError) as error:
         logger.warning("Model listing failed: %s", str(error)[:200])
         print("None")
         return 1
 
-    reply = complete("Reply with one word.", "Say hello.")
+    reply = complete("Say hello.", system="Reply with one word.")
     if reply is None:
-        print("None")
+        print("reply: None")
         return 1
-    print(reply)
+    print(f"reply: {reply}")
     return 0
 
 

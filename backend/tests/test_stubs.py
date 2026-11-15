@@ -37,7 +37,9 @@ def test_health():
 def test_dashboard_summary_counts_the_sample_records():
     body = get_ok("/dashboard/summary")
     schemas.DashboardSummary.model_validate(body)
-    assert body["investigation_count"] == 14
+    assert body["dataset_note"].startswith("Sample data")
+    assert body["test_count"] == 6
+    assert body["habitat_count"] == 2
     assert len(body["counts_by_topic"]) == 7
 
 
